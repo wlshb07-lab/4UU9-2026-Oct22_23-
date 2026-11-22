@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🐣 雜誌10月號 U9 Step into the Past and Present of Wanhua</title>
+<style>
+:root{
+  --mBlue:#E2F1FF; --mPurple:#F3E8FF; --mPink:#FCE7F3; --mYellow:#FFFBEB;
+  --mGreen:#ECFDF5; --coffee:#4A3E3D; --coffeeLt:#6B5A59; --bg:#FFFDF9;
+  --ok:#3F9D6B; --no:#C2557A;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--coffee);
+ font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+ line-height:1.75;font-size:16px}
+#fw{position:fixed;inset:0;pointer-events:none;z-index:50}
+header{position:sticky;top:0;z-index:40;background:var(--mBlue);
+ border-bottom:2px solid #cfe4f7;display:flex;align-items:center;
+ justify-content:space-between;gap:10px;padding:8px 14px}
+header h1{font-size:1.0rem;margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.btn{cursor:pointer;border:2px solid #d9c9e8;background:var(--mPurple);color:var(--coffee);
+ border-radius:14px;padding:7px 14px;font-size:.95rem;font-family:inherit;transition:.18s}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:translateY(1px)}
+.btn:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid #9b7bc4;outline-offset:2px}
+#menu{position:absolute;right:10px;top:52px;z-index:41;background:#fff;border:2px solid #e4d6f2;
+ border-radius:18px;padding:10px;box-shadow:0 10px 28px rgba(74,62,61,.18);display:none;min-width:250px}
+#menu.open{display:block}
+#menu .btn{display:block;width:100%;text-align:left;margin:6px 0}
+main{max-width:960px;margin:0 auto;padding:16px 14px 80px}
+section{display:none}
+section.active{display:block}
+h2{font-size:1.25rem;border-left:8px solid #d9c9e8;padding-left:10px;margin:26px 0 12px}
+h3{font-size:1.05rem;margin:20px 0 8px;color:#5c4a63}
+.card{background:#fff;border:2px solid #f0e6f7;border-radius:18px;padding:14px;margin:12px 0}
+.q{background:var(--mYellow);border:2px solid #f3e6c5;border-radius:16px;padding:13px;margin:14px 0}
+.q p.stem{font-weight:700;margin:.2em 0 .6em}
+.opt{display:block;width:100%;text-align:left;background:#fff;border:2px solid #e9dcf5;
+ border-radius:12px;padding:8px 12px;margin:5px 0;cursor:pointer;font-family:inherit;font-size:.97rem;transition:.15s}
+.opt:hover{transform:translateY(-2px);background:var(--mPurple)}
+.opt.right{background:var(--mGreen);border-color:#9ed9b8}
+.opt.wrong{background:var(--mPink);border-color:#e39ab9}
+.sol{display:none;margin-top:10px;background:var(--mGreen);border:2px dashed #a9dcc1;
+ border-radius:14px;padding:12px;animation:open .45s ease}
+.sol.show{display:block}
+@keyframes open{from{opacity:0;transform:rotateX(-70deg);transform-origin:top}to{opacity:1;transform:rotateX(0)}}
+.sol b{color:#2f7a53}
+.blank{display:inline-block;min-width:110px;border:none;border-bottom:2px solid #8fbfe8;
+ background:var(--mBlue);border-radius:6px 6px 0 0;padding:2px 6px;font-family:inherit;font-size:.95rem;color:var(--coffee)}
+.blank.right{background:var(--mGreen);border-bottom-color:#4aa578}
+.blank.wrong{background:var(--mPink);border-bottom-color:#d4779f}
+select.dd{background:var(--mPurple);border:2px solid #d9c9e8;border-radius:10px;padding:3px 6px;font-family:inherit;font-size:.95rem;color:var(--coffee)}
+.num{color:#8a6fae;font-weight:700;font-size:.85rem;vertical-align:super}
+mark{background:#FFF3B0;padding:0 2px;border-radius:4px}
+.kw{color:#7a4fa8;font-weight:700}
+.spk{cursor:pointer;border:none;background:transparent;font-size:1rem;padding:0 3px}
+#score{display:none;position:sticky;top:50px;z-index:30;background:var(--mGreen);
+ border:2px solid #a9dcc1;border-radius:14px;padding:8px 12px;margin:8px 0;font-weight:700}
+#score.show{display:block}
+.pop{display:inline-block;animation:pop .5s}
+@keyframes pop{0%{transform:scale(1)}45%{transform:scale(1.6)}100%{transform:scale(1)}}
+#toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:var(--coffee);
+ color:#fff;border-radius:16px;padding:10px 18px;z-index:60;display:none;max-width:90%}
+.tabsel{background:var(--mPink);border-color:#f0b9d3}
+.wbwrap{position:sticky;top:52px;z-index:20;background:var(--mYellow);border:2px solid #f3e6c5;border-radius:16px;margin:10px 0}
+.wbhead{cursor:pointer;padding:8px 12px;font-weight:700;display:flex;justify-content:space-between}
+.wbbody{max-height:170px;overflow-y:auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px}
+.wbbody.hide{display:none}
+.chip{cursor:pointer;background:#fff;border:2px solid #e9dcf5;border-radius:12px;padding:4px 10px;font-size:.93rem;transition:.15s}
+.chip:hover{transform:translateY(-2px)}
+.chip.sel{background:var(--mPink);border-color:#f0b9d3}
+.chip.used{opacity:.35;pointer-events:none}
+.slot{display:inline-block;min-width:130px;border-bottom:2px solid #8fbfe8;background:var(--mBlue);
+ border-radius:6px 6px 0 0;padding:2px 8px;cursor:pointer;min-height:1.7em}
+.slot.right{background:var(--mGreen);border-bottom-color:#4aa578}
+.slot.wrong{background:var(--mPink);border-bottom-color:#d4779f}
+.zh{color:#2f7a53;font-size:.9rem}
+.seq{display:flex;flex-direction:column;gap:6px;margin:8px 0}
+.seqitem{cursor:pointer;background:#fff;border:2px solid #e9dcf5;border-radius:12px;padding:8px 12px;transition:.15s}
+.seqitem:hover{transform:translateY(-2px)}
+.seqitem.picked{background:var(--mPurple);border-color:#c9aee4}
+.board{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin:10px 0}
+.sq{border:2px solid #e9dcf5;border-radius:12px;padding:8px 4px;text-align:center;font-size:.8rem;background:#fff}
+.sq.here{background:var(--mPink);border-color:#f0b9d3;font-weight:700}
+.sq.done{background:var(--mGreen);border-color:#9ed9b8}
+textarea{width:100%;font-family:inherit;font-size:.97rem;border:2px solid #cfe4f7;border-radius:12px;padding:8px;background:var(--mBlue);color:var(--coffee)}
+table{border-collapse:collapse;width:100%;font-size:.9rem;margin:8px 0}
+th,td{border:1px solid #e4d6f2;padding:6px 8px;text-align:left}
+th{background:var(--mPurple)}
+@media(max-width:600px){body{font-size:15px}main{padding:12px 10px 70px}
+ h2{font-size:1.1rem}.board{grid-template-columns:repeat(4,1fr)}.wbbody{max-height:130px}
+ header h1{font-size:.85rem}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<canvas id="fw"></canvas>
+<header>
+  <h1>🐣 雜誌10月號 U9　Step into the Past and Present of Wanhua</h1>
+  <button class="btn" id="menuBtn" onclick="toggleMenu()">☰ 選單</button>
+</header>
+<div id="menu">
+  <button class="btn" onclick="go('practice')">💡 字彙對對碰</button>
+  <button class="btn" onclick="go('cloze')">📝 克漏字與填空</button>
+  <button class="btn" onclick="go('review')">📚 Reading 架構總複習</button>
+  <button class="btn" onclick="go('board')">🎲 摘要大富翁</button>
+  <button class="btn" onclick="go('gias')">✍️ GIAS 綜合練習與混合題</button>
+  <button class="btn" onclick="go('life')">🏮 生活應用 Wanhua Lab</button>
+  <button class="btn" onclick="go('focus')">📐 Language in Focus</button>
+  <button class="btn" onclick="go('analysis')">🧭 文體與組織分析</button>
+  <hr>
+  <button class="btn" onclick="toggleScore()">🏆 顯示／隱藏計分列</button>
+  <button class="btn" onclick="wipe()">🧹 清除紀錄，重新開始</button>
+</div>
+<main>
+<div id="score">🏆 Kahoot 積分：<span id="pts" class="pop">0</span> 分　|　🔥 連對：<span id="streak">0</span>　|　✅ 答對 <span id="nok">0</span> / 作答 <span id="ntot">0</span></div>
+
+<!-- ============ TAB 1 ============ -->
+<section id="practice" class="active">
+  <h2>💡 字彙對對碰</h2>
+  <div id="catbar" style="display:flex;flex-wrap:wrap;gap:6px"></div>
+  <div class="wbwrap">
+    <div class="wbhead" onclick="document.getElementById('wbbody').classList.toggle('hide')">
+      <span>🗃 Word Bank（點選詞彙 → 再點空格填入；再點空格可退回）</span><span>▲▼</span>
+    </div>
+    <div class="wbbody" id="wbbody"></div>
+  </div>
+  <div id="qlist"></div>
+  <button class="btn" onclick="checkPractice()">✓ Check answers</button>
+</section>
+
+<!-- ============ TAB 2 ============ -->
+<section id="cloze">
+  <h2>📝 克漏字與填空</h2>
+  <p class="zh">每題 4 分，滿分 100 分，忽略大小寫。</p>
+  <div class="card" id="clozeText"></div>
+  <button class="btn" onclick="checkCloze()">✓ Check answers</button>
+  <button class="btn" onclick="toggleSol('clozeSol')">📖 參考解答：</button>
+  <div class="sol" id="clozeSol">
+    <h3>參考解答的句子（完整課文，答案以粗體標示）</h3>
+    <p>When you <b>think of</b> Wanhua, what <b>comes to mind</b>（當你想到萬華時，腦中會浮現什麼畫面）? Maybe you <b>picture</b>（想像）narrow streets full of food <b>(E) scents</b> and noisy crowds. In fact, one of Taipei's oldest areas is hidden behind this busy scene. <button class="spk" onclick="readSlow('When you think of Wanhua, what comes to mind? Maybe you picture narrow streets full of food scents and noisy crowds. In fact, one of Taipei\u2019s oldest areas is hidden behind this busy scene.')">🔊</button></p>
+    <p>To understand Wanhua's history, we cannot miss Bopiliao <b>Historic</b> Block（我們就不能不提到剝皮寮歷史街區）. Over 200 years ago, the area was a busy commercial <b>neighborhood</b> because it was close to the <b>port</b> of Bangka（這一帶因為靠近艋舺港，是一個繁忙的商業街區）. Now, what makes Bopiliao special is its mix of architectural styles. You can see Qing-dynasty Chinese shophouses on one side and Western-style red-brick <b>fronts</b>（正面）from the Japanese <b>(C) era</b> on the other. Some old buildings are now <b>exhibition</b> spaces（有些老建築現在已成為展覽空間）that allow visitors to learn about Wanhua's history. <button class="spk" onclick="readSlow('To understand Wanhua\u2019s history, we cannot miss Bopiliao Historic Block. Over 200 years ago, the area was a busy commercial neighborhood because it was close to the port of Bangka. Now, what makes Bopiliao special is its mix of architectural styles. You can see Qing-dynasty Chinese shophouses on one side and Western-style red-brick fronts from the Japanese era on the other. Some old buildings are now exhibition spaces that allow visitors to learn about Wanhua\u2019s history.')">🔊</button></p>
+    <p>How did Bopiliao get its name? There are several <b>stories</b>（說詞）. In Chinese, bo pi means "to peel skin or bark," while liao means "a simple <b>hut</b>（簡陋的小屋）." Some believe workers here used to peel tree bark from imported wood, or peel animal skins. Others believe the name came from the Taiwanese <b>(D) pronunciation</b> of the area's older Chinese names, such as Fupiliao or Beipiliao. <b>Still</b>（儘管如此）, no one knows <b>for sure</b>（沒有人能肯定這個地名的由來為何）. <button class="spk" onclick="readSlow('How did Bopiliao get its name? There are several stories. In Chinese, bo pi means to peel skin or bark, while liao means a simple hut. Some believe workers here used to peel tree bark from imported wood, or peel animal skins. Others believe the name came from the Taiwanese pronunciation of the area\u2019s older Chinese names, such as Fupiliao or Beipiliao. Still, no one knows for sure.')">🔊</button></p>
+    <p>Next, let's head to Longshan Temple. As one of Taipei's Three Great Temples, it was built in 1738 and has been an important center of local <b>faith</b>（建於 1738 年的龍山寺一直是當地信仰的重要中心）. Visitors can find unique bronze dragon <b>(A) columns</b> and <b>detailed</b> carvings（細緻的雕刻）here. The temple <b>is also home to</b> over 100 gods（這間廟也是一百多尊神明的所在地）, including the popular Old Man Under the Moon. It is believed that this god helps people find love. <button class="spk" onclick="readSlow('Next, let\u2019s head to Longshan Temple. As one of Taipei\u2019s Three Great Temples, it was built in 1738 and has been an important center of local faith. Visitors can find unique bronze dragon columns and detailed carvings here. The temple is also home to over 100 gods, including the popular Old Man Under the Moon. It is believed that this god helps people find love.')">🔊</button></p>
+    <p>Not far away, Bangka Night Market offers another <b>side</b>（方面）of the area. Here, we can find a wide <b>(F) variety</b> of street food and seafood, from oyster omelets and rice noodles to shaved ice. One must-try is Donggang swordfish tempura. Fresh swordfish paste is <b>wrapped</b> around a piece of boiled egg and deep-fried until golden and <b>crispy</b>（新鮮的旗魚漿包著一塊米煮蛋，再下鍋油炸到金黃酥脆）. Each bite gives you fish, egg, and <b>(B) crunch</b> <b>all at once</b>（全部一起）. <button class="spk" onclick="readSlow('Not far away, Bangka Night Market offers another side of the area. Here, we can find a wide variety of street food and seafood, from oyster omelets and rice noodles to shaved ice. One must-try is Donggang swordfish tempura. Fresh swordfish paste is wrapped around a piece of boiled egg and deep-fried until golden and crispy. Each bite gives you fish, egg, and crunch all at once.')">🔊</button></p>
+    <p>Together, Bopiliao, Longshan Temple, and Bangka Night Market show what makes Wanhua special. They let visitors step into the past without leaving the present. <button class="spk" onclick="readSlow('Together, Bopiliao, Longshan Temple, and Bangka Night Market show what makes Wanhua special. They let visitors step into the past without leaving the present.')">🔊</button></p>
+    <h3>25 格答案速查表</h3>
+    <table><tr><th>格</th><th>答案</th><th>格</th><th>答案</th><th>格</th><th>答案</th></tr>
+    <tr><td>1</td><td>think of</td><td>10</td><td>exhibition</td><td>19</td><td>is also home to</td></tr>
+    <tr><td>2</td><td>comes to mind</td><td>11</td><td>stories</td><td>20</td><td>side</td></tr>
+    <tr><td>3</td><td>picture</td><td>12</td><td>hut</td><td>21</td><td>(F) variety</td></tr>
+    <tr><td>4</td><td>(E) scents</td><td>13</td><td>(D) pronunciation</td><td>22</td><td>wrapped</td></tr>
+    <tr><td>5</td><td>Historic</td><td>14</td><td>Still</td><td>23</td><td>crispy</td></tr>
+    <tr><td>6</td><td>neighborhood</td><td>15</td><td>for sure</td><td>24</td><td>(B) crunch</td></tr>
+    <tr><td>7</td><td>port</td><td>16</td><td>faith</td><td>25</td><td>all at once</td></tr>
+    <tr><td>8</td><td>fronts</td><td>17</td><td>(A) columns</td><td></td><td></td></tr>
+    <tr><td>9</td><td>(C) era</td><td>18</td><td>detailed</td><td></td><td></td></tr></table>
+  </div>
+</section>
+<!-- ============ TAB 3 ============ -->
+<section id="review">
+  <h2>📚 Reading 架構總複習</h2>
+
+  <h3>一、Reading</h3>
+  <div class="card">
+    <button class="btn" onclick="readSlow(document.getElementById('day22').innerText)">🔊 Oct. 22</button>
+    <button class="btn" onclick="readSlow(document.getElementById('day23').innerText)">🔊 Oct. 23</button>
+    <button class="btn" onclick="stopRead()">⏹ 停止</button>
+    <p style="font-weight:700">UNIT 9　品味臺灣　10/22–23　★★★<br>Step into the Past and Present of Wanhua!<br><span class="zh">走進萬華　看見臺北的古今風景</span></p>
+    <div id="day22">
+      <p><b>Oct. 22　¶1</b>　<mark>When you think of Wanhua, what comes to mind?</mark> Maybe you picture narrow streets full of food <span class="kw">scents</span> and noisy crowds. <mark>In fact</mark>, one of Taipei's oldest areas is <span class="kw">hidden behind this busy scene</span>.</p>
+      <p><b>¶2</b>　<mark>To understand Wanhua's history</mark>, we cannot miss Bopiliao <span class="kw">Historic</span> Block. <mark>Over 200 years ago</mark>, the area was a busy commercial <span class="kw">neighborhood</span> <mark>because</mark> it was close to the <span class="kw">port</span> of Bangka. <mark>Now</mark>, what makes Bopiliao special is its <span class="kw">mix of architectural styles</span>. You can see Qing-dynasty Chinese shophouses <mark>on one side</mark> and Western-style red-brick fronts from the Japanese <span class="kw">era</span> <mark>on the other</mark>. Some old buildings are now <span class="kw">exhibition</span> spaces that allow visitors to learn about Wanhua's history.</p>
+      <p><b>¶3</b>　<mark>How did Bopiliao get its name?</mark> <mark>There are several stories.</mark> In Chinese, bo pi means "to <span class="kw">peel</span> skin or bark," <mark>while</mark> liao means "a simple <span class="kw">hut</span>." <mark>Some believe</mark> workers here used to peel tree bark from imported wood, or peel animal skins. <mark>Others believe</mark> the name came from the Taiwanese <span class="kw">pronunciation</span> of the area's older Chinese names, <mark>such as</mark> Fupiliao or Beipiliao. <mark>Still, no one knows for sure.</mark></p>
+    </div>
+    <div id="day23">
+      <p><b>Oct. 23　¶1</b>　<mark>Next, let's head to</mark> Longshan Temple. <mark>As one of Taipei's Three Great Temples</mark>, it was built in 1738 and <span class="kw">has been an important center of local faith</span>. Visitors can find unique bronze dragon <span class="kw">columns</span> and <span class="kw">detailed</span> carvings here. The temple is also <span class="kw">home to over 100 gods</span>, <mark>including</mark> the popular Old Man Under the Moon. <mark>It is believed that</mark> this god helps people find love.</p>
+      <p><b>¶2</b>　<mark>Not far away</mark>, Bangka Night Market offers <mark>another side of the area</mark>. Here, we can find a wide <span class="kw">variety</span> of street food and seafood, <mark>from</mark> oyster omelets and rice noodles <mark>to</mark> shaved ice. <mark>One must-try is</mark> Donggang swordfish tempura. Fresh swordfish paste is <span class="kw">wrapped</span> around a piece of boiled egg and deep-fried <mark>until</mark> golden and <span class="kw">crispy</span>. Each bite gives you fish, egg, and <span class="kw">crunch</span> all at once.</p>
+      <p><b>¶3</b>　<mark>Together</mark>, Bopiliao, Longshan Temple, and Bangka Night Market show what makes Wanhua special. <span class="kw">They let visitors step into the past without leaving the present.</span></p>
+    </div>
+  </div>
+
+  <h3>二、架構偵察</h3>
+  <div id="genreQs"></div>
+
+  <div class="q">
+    <p class="stem">📐 Oct. 22 結構排序：請依序點選，排出這一天的組織順序。</p>
+    <div class="seq" id="seqA"></div>
+    <button class="btn" onclick="checkSeq('A')">✓ 檢查</button>
+    <button class="btn" onclick="resetSeq('A')">↺ 重排</button>
+    <button class="btn" onclick="toggleSol('solSeqA')">📖 參考解答：</button>
+    <div class="sol" id="solSeqA"><b>正解順序：</b>①→②→③。Oct. 22 走「提問導入並推翻刻板印象 → 介紹剝皮寮的歷史與建築特色 → 討論地名由來的眾說紛紜」。<br><b>解題程序：</b>抓訊號詞 When you think of…? ／ In fact（推翻前面的印象）／ To understand Wanhua's history（轉入正題）／ How did Bopiliao get its name?（新問題）／ Still, no one knows for sure（懸而未決）。<br><b>常見錯誤：</b>把「地名由來」排在「歷史與建築」之前——命名之謎是在讀者已經認識剝皮寮之後才拋出的延伸問題，順序顛倒會讓 its name 失去指涉對象。</div>
+  </div>
+
+  <div class="q">
+    <p class="stem">🕒 Oct. 23 路線排序：請依課文的導覽順序點選。</p>
+    <div class="seq" id="seqB"></div>
+    <button class="btn" onclick="checkSeq('B')">✓ 檢查</button>
+    <button class="btn" onclick="resetSeq('B')">↺ 重排</button>
+    <button class="btn" onclick="toggleSol('solSeqB')">📖 參考解答：</button>
+    <div class="sol" id="solSeqB"><b>正解順序：</b>龍山寺的歷史與信仰地位 → 寺中的銅鑄龍柱、雕刻與上百尊神明（含月老）→ 不遠處的艋舺夜市與各式小吃 → 必吃的東港旗魚黑輪 → 三處合起來的總結。<br><b>解題程序：</b>這一天用「空間移動」當組織軸線，訊號是 Next, let's head to ／ Not far away ／ One must-try is ／ Together。<br><b>常見錯誤：</b>把夜市排在龍山寺之前——Not far away 是以龍山寺為基準點的相對位置，沒有前一站就無從「不遠」。</div>
+  </div>
+
+  <div class="q">
+    <p class="stem">🧩 摘要重組（Oct. 22）：句子已打散，請依說明文結構依序點選——第 1 句＝主題句，第 2、3 句＝兩個支持論點，第 4 句＝結論句。</p>
+    <div class="seq" id="seqR22"></div>
+    <button class="btn" onclick="checkSeq('R22')">✓ 檢查</button>
+    <button class="btn" onclick="resetSeq('R22')">↺ 重排</button>
+    <button class="btn" onclick="toggleSol('solSeqR22')">📖 參考解答：</button>
+    <div class="sol" id="solSeqR22"><b>摘要 Summary：</b>In fact, one of Taipei's oldest areas is hidden behind the busy scene of Wanhua. To understand Wanhua's history, we cannot miss Bopiliao Historic Block, which was a busy commercial neighborhood over 200 years ago because it was close to the port of Bangka. What makes Bopiliao special is its mix of architectural styles, and some old buildings are now exhibition spaces that allow visitors to learn about Wanhua's history. There are several stories about how Bopiliao got its name, but still, no one knows for sure. <button class="spk" onclick="readSlow('In fact, one of Taipei’s oldest areas is hidden behind the busy scene of Wanhua. To understand Wanhua’s history, we cannot miss Bopiliao Historic Block, which was a busy commercial neighborhood over 200 years ago because it was close to the port of Bangka. What makes Bopiliao special is its mix of architectural styles, and some old buildings are now exhibition spaces that allow visitors to learn about Wanhua’s history. There are several stories about how Bopiliao got its name, but still, no one knows for sure.')">🔊</button><br>（第 1 句＝主題句；第 2 句＝支持論點一；第 3 句＝支持論點二；第 4 句＝結論句）<br><b>判斷程序：</b>① 帶 In fact 並推翻「只有小吃與人潮」印象、提出全段主張者為主題句。② 以 To understand Wanhua's history 把讀者帶進剝皮寮的歷史，是第一個支持論點。③ What makes Bopiliao special 說明建築特色與現今用途，是第二個支持論點。④ 以 still, no one knows for sure 的懸而未決收尾。<br><b>常見錯誤：</b>把命名之謎排到前面，會讓 its name 失去指涉對象。</div>
+  </div>
+
+  <div class="q">
+    <p class="stem">🧩 摘要重組（Oct. 23）：句子已打散，請依說明文結構依序點選——第 1 句＝主題句，第 2、3 句＝兩個支持論點，第 4 句＝結論句。</p>
+    <div class="seq" id="seqR23"></div>
+    <button class="btn" onclick="checkSeq('R23')">✓ 檢查</button>
+    <button class="btn" onclick="resetSeq('R23')">↺ 重排</button>
+    <button class="btn" onclick="toggleSol('solSeqR23')">📖 參考解答：</button>
+    <div class="sol" id="solSeqR23"><b>摘要 Summary：</b>Longshan Temple and Bangka Night Market offer two more sides of Wanhua. As one of Taipei's Three Great Temples, Longshan Temple has been an important center of local faith, and it is believed that the Old Man Under the Moon helps people find love. At Bangka Night Market, we can find a wide variety of street food, and one must-try is Donggang swordfish tempura, which is deep-fried until golden and crispy. Together, Bopiliao, Longshan Temple, and Bangka Night Market let visitors step into the past without leaving the present. <button class="spk" onclick="readSlow('Longshan Temple and Bangka Night Market offer two more sides of Wanhua. As one of Taipei’s Three Great Temples, Longshan Temple has been an important center of local faith, and it is believed that the Old Man Under the Moon helps people find love. At Bangka Night Market, we can find a wide variety of street food, and one must-try is Donggang swordfish tempura, which is deep-fried until golden and crispy. Together, Bopiliao, Longshan Temple, and Bangka Night Market let visitors step into the past without leaving the present.')">🔊</button><br>（第 1 句＝主題句；第 2 句＝支持論點一；第 3 句＝支持論點二；第 4 句＝結論句）<br><b>判斷程序：</b>① 同時點名兩個地點、提出全段範圍者為主題句。② 龍山寺（信仰與月老）是第一站，也是第一個支持論點。③ 艋舺夜市（小吃與必吃黑輪）是第二站，也是第二個支持論點。④ 以 Together 開頭、把三處合起來的句子為結論句。<br><b>常見錯誤：</b>把 Together 那句排到中間——它同時提到 Bopiliao，是跨兩天的總收束，只能放最後。</div>
+  </div>
+
+  <h3>三、四層次思考（English A2–B1／中文解說）</h3>
+  <div id="fourQs"></div>
+
+  <h3>四、學測題型</h3>
+  <div id="gsatQs"></div>
+
+  <div class="q">
+    <p class="stem">🈺 翻譯 1：剝皮寮之所以特別，在於它融合了多種建築風格。</p>
+    <textarea id="tr1" rows="2"></textarea>
+    <button class="btn" onclick="toggleSol('solTr1')">📖 參考解答：</button>
+    <div class="sol" id="solTr1">What makes Bopiliao special is its mix of architectural styles. <button class="spk" onclick="readWord('What makes Bopiliao special is its mix of architectural styles.')">🔊</button><br><b>解說：</b>What 引導名詞子句當主詞（What makes A special），視為單數，故主要動詞用 is；make + O + adj. 為「使…成為…」的受詞補語結構。常見錯誤：寫成 What makes Bopiliao special are…。</div>
+  </div>
+
+  <div class="q">
+    <p class="stem">🈺 翻譯 2：據信這位神明會幫助人們找到愛情。</p>
+    <textarea id="tr2" rows="2"></textarea>
+    <button class="btn" onclick="toggleSol('solTr2')">📖 參考解答：</button>
+    <div class="sol" id="solTr2">It is believed that this god helps people find love. <button class="spk" onclick="readWord('It is believed that this god helps people find love.')">🔊</button><br><b>解說：</b>It 為虛主詞，that 子句才是真主詞；亦可改寫為 This god is believed to help people find love。help + O + 原形動詞（find），不可寫成 help people to finding。</div>
+  </div>
+</section>
+
+<!-- ============ TAB 4 ============ -->
+<section id="board">
+  <h2>🎲 摘要大富翁</h2>
+  <p>擲骰子前進，停在哪一格就答哪一題。答對得分並保留該格，答錯留在原地重整旗鼓。走完 12 格即完成一圈。</p>
+  <div class="board" id="boardGrid"></div>
+  <button class="btn" onclick="roll()">🎲 擲骰子</button>
+  <button class="btn" onclick="resetBoard()">↺ 重新開始</button>
+  <p id="diceMsg" style="font-weight:700"></p>
+  <div id="boardQ"></div>
+</section>
+
+<!-- ============ TAB 5 ============ -->
+<section id="gias">
+  <h2>✍️ GIAS 綜合練習與混合題</h2>
+
+  <h3>一、重組練習｜請將下列字詞重組成一個完整句子，並於句尾加上適當的標點符號（大小寫不變化）</h3>
+  <div class="q">
+    <p class="stem">1. the port of Bangka ／ because ／ a busy commercial neighborhood ／ it was close to ／ the area was</p>
+    <textarea id="g1" rows="2"></textarea>
+    <button class="btn" onclick="toggleSol('solG1')">📖 參考解答：</button>
+    <div class="sol" id="solG1"><b>✅ 答案：</b>The area was a busy commercial neighborhood because it was close to the port of Bangka. <button class="spk" onclick="readWord('The area was a busy commercial neighborhood because it was close to the port of Bangka.')">🔊</button><br><b>🔍 解析：</b>重組程序：先立主要子句 The area was a busy commercial neighborhood，再用從屬連接詞 because 引導副詞子句說明原因。be close to 為「靠近…」，to 後接名詞。常見錯誤：把 because 寫成 because of——後者是介系詞片語，後面不能接 it was 這樣的完整子句。</div>
+  </div>
+
+  <div class="q">
+    <p class="stem">2. without ／ step into the past ／ leaving ／ They let visitors ／ the present</p>
+    <textarea id="g2" rows="2"></textarea>
+    <button class="btn" onclick="toggleSol('solG2')">📖 參考解答：</button>
+    <div class="sol" id="solG2"><b>✅ 答案：</b>They let visitors step into the past without leaving the present. <button class="spk" onclick="readWord('They let visitors step into the past without leaving the present.')">🔊</button><br><b>🔍 解析：</b>let 為使役動詞，受詞後接原形動詞 step，不可加 to；without 為介系詞，後方動詞須變成動名詞 leaving。這一句同時是全課的收尾金句，用「踏入過去／不離開現在」的對比收束兩天內容。</div>
+  </div>
+
+  <h3>二、混合題型挑戰</h3>
+  <div id="mixQs"></div>
+
+  <div class="q">
+    <p class="stem">3. Which TWO of the following statements are true about Wanhua?</p>
+    <p>(A) Bopiliao Historic Block was once close to a busy port.<br>
+    (B) All the old buildings in Bopiliao are now private homes.<br>
+    (C) Longshan Temple was built in 1738 and is one of Taipei's Three Great Temples.<br>
+    (D) Everyone agrees on how Bopiliao got its name.<br>
+    (E) Bangka Night Market sells only seafood.<br>
+    (F) Donggang swordfish tempura is boiled instead of deep-fried.</p>
+    <textarea id="m3" rows="1" placeholder="請寫下兩個選項，例如 AB"></textarea>
+    <button class="btn" onclick="toggleSol('solM3')">📖 參考解答：</button>
+    <div class="sol" id="solM3"><b>✅ 答案：(A)(C)</b><br><b>🔍 解析：</b>(A) 對應 it was close to the port of Bangka；(C) 對應 As one of Taipei's Three Great Temples, it was built in 1738。<br><b>為何其他錯：</b>(B) 課文說 Some old buildings are now exhibition spaces，Some 不等於 All，且用途是展覽而非住家；(D) 課文明說 Still, no one knows for sure；(E) 課文寫 a wide variety of street food and seafood，小吃與海鮮並陳；(F) 課文說 deep-fried until golden and crispy。<br><b>解題程序：</b>多選題逐一把選項配回原句，最常見的陷阱是 Some／All 這類範圍詞被偷換，以及烹調方式、年代等細節被改寫。</div>
+  </div>
+
+  <div class="q">
+    <p class="stem">4. Complete the following sentences with information from the article. Change the forms of the words to make the sentences correct.</p>
+    <p>Bopiliao is special because it mixes different <input class="blank" id="m4a"> styles. Today, some of its old buildings are used for <input class="blank" id="m4b">, so visitors can learn about the history of Wanhua.</p>
+    <button class="btn" onclick="toggleSol('solM4')">📖 參考解答：</button>
+    <div class="sol" id="solM4"><b>✅ 答案：</b>architectural；exhibitions（或 exhibition） <button class="spk" onclick="readWord('Bopiliao is special because it mixes different architectural styles. Today, some of its old buildings are used for exhibitions, so visitors can learn about the history of Wanhua.')">🔊</button><br><b>🔍 解析：</b>第一格在名詞 styles 之前，需要形容詞，故用 architectural（課文原句 a mix of architectural styles）。第二格在介系詞 for 之後，需要名詞，課文的 exhibition spaces 中 exhibition 是名詞作修飾語，此處單用名詞，寫 exhibitions 或 exhibition 皆可。<br><b>解題程序：</b>詞形轉換題先判斷空格的「詞性位置」——名詞前＝形容詞；介系詞後＝名詞——再回課文找同源字。</div>
+  </div>
+</section>
+<!-- ============ TAB 6 ============ -->
+<section id="life">
+  <h2>🏮 生活應用 Wanhua Lab</h2>
+  <div class="card" style="text-align:center">
+    <svg viewBox="0 0 340 150" style="width:100%;max-width:330px;height:auto" role="img" aria-label="An old shophouse street beside a temple lantern and a bowl of night-market food">
+      <rect x="0" y="0" width="340" height="150" rx="14" fill="#FFFBEB"/>
+      <g>
+        <rect x="18" y="52" width="46" height="74" fill="#C2557A" opacity=".55"/>
+        <rect x="64" y="44" width="46" height="82" fill="#6B5A59"/>
+        <rect x="110" y="56" width="42" height="70" fill="#C2557A" opacity=".4"/>
+        <path d="M12 54 L88 24 L158 56 Z" fill="#4A3E3D"/>
+        <g fill="#FFFDF9"><rect x="28" y="68" width="16" height="16" rx="2"/><rect x="76" y="62" width="16" height="16" rx="2"/><rect x="122" y="72" width="14" height="14" rx="2"/></g>
+        <g fill="#FFF3B0"><rect x="28" y="100" width="18" height="26" rx="3"/><rect x="76" y="96" width="20" height="30" rx="3"/><rect x="122" y="104" width="16" height="22" rx="3"/></g>
+      </g>
+      <g transform="translate(196,22)">
+        <line x1="22" y1="0" x2="22" y2="14" stroke="#4A3E3D" stroke-width="3"/>
+        <ellipse cx="22" cy="36" rx="20" ry="24" fill="#C2557A"/>
+        <path d="M2 36 Q22 30 42 36 Q22 42 2 36 Z" fill="#FFFDF9" opacity=".35"/>
+        <rect x="14" y="58" width="16" height="8" rx="2" fill="#4A3E3D"/>
+        <g stroke="#FFF3B0" stroke-width="2"><line x1="16" y1="66" x2="16" y2="78"/><line x1="22" y1="66" x2="22" y2="80"/><line x1="28" y1="66" x2="28" y2="78"/></g>
+      </g>
+      <g transform="translate(252,88)">
+        <path d="M0 10 Q34 -6 68 10 Q58 38 34 38 Q10 38 0 10 Z" fill="#ECFDF5" stroke="#3F9D6B" stroke-width="3"/>
+        <ellipse cx="34" cy="14" rx="14" ry="8" fill="#FFF3B0" stroke="#d9b94a" stroke-width="2"/>
+        <circle cx="18" cy="22" r="4" fill="#C2557A" opacity=".6"/>
+        <circle cx="50" cy="22" r="4" fill="#C2557A" opacity=".6"/>
+      </g>
+    </svg>
+  </div>
+
+  <h3>一、Vocabulary（Oct. 22）</h3>
+  <div class="card" id="voc22"></div>
+
+  <h3>二、字彙小補帖（Oct. 22）</h3>
+  <div class="card" id="pk22"></div>
+
+  <h3>三、Vocabulary（Oct. 23）</h3>
+  <div class="card" id="voc23"></div>
+
+  <h3>四、字彙小補帖（Oct. 23）</h3>
+  <div class="card" id="pk23"></div>
+
+  <h3>五、文化小百科</h3>
+  <div class="card">
+    <p><b>剝皮寮歷史街區（Bopiliao Historic Block）</b><br>圖中的建築為街屋（shophouse），又稱「店屋」。店屋通常為兩到三層樓的連棟式設計，一樓作為店面或工作空間，樓上則是住家，兼具了商業與居住功能。 <button class="spk" onclick="readWord('Bopiliao Historic Block. The buildings in the picture are shophouses.')">🔊</button></p>
+    <p><b>龍山寺（Longshan Temple）</b>｜龍山寺擁有全臺唯一的銅鑄龍柱。 <button class="spk" onclick="readWord('Longshan Temple has the only bronze dragon columns in Taiwan.')">🔊</button></p>
+    <p><b>月下老人（Old Man Under the Moon）</b> <button class="spk" onclick="readWord('Old Man Under the Moon')">🔊</button></p>
+    <p><b>艋舺夜市（Bangka Night Market）</b> <button class="spk" onclick="readWord('Bangka Night Market')">🔊</button></p>
+    <p><b>蚵仔煎（oyster omelet）</b> <button class="spk" onclick="readWord('oyster omelet')">🔊</button>｜<b>米粉（rice noodles）</b> <button class="spk" onclick="readWord('rice noodles')">🔊</button>｜<b>刨冰（shaved ice）</b> <button class="spk" onclick="readWord('shaved ice')">🔊</button></p>
+    <p><b>東港旗魚黑輪（Donggang swordfish tempura）</b> <button class="spk" onclick="readWord('Donggang swordfish tempura')">🔊</button></p>
+  </div>
+
+  <h3>六、生活情境判斷</h3>
+  <div id="lifeQs"></div>
+
+  <h3>七、延伸寫作</h3>
+  <div class="q">
+    <p class="stem">✍️ A foreign friend has only one afternoon in Taipei. Write 3–4 sentences to introduce Wanhua. You must use <b>what makes … special</b> and <b>It is believed that …</b>.</p>
+    <textarea id="lwrite" rows="4" placeholder="If you only have one afternoon, head to Wanhua. What makes ..."></textarea>
+    <button class="btn" onclick="toggleSol('solLW')">📖 參考解答：</button>
+    <div class="sol" id="solLW"><b>參考寫法：</b>If you only have one afternoon in Taipei, let's head to Wanhua. What makes Bopiliao Historic Block special is its mix of architectural styles, so you can see Qing-dynasty shophouses and Japanese-era red-brick fronts on the same street. Next, visit Longshan Temple, where it is believed that the Old Man Under the Moon helps people find love. Not far away, Bangka Night Market offers a wide variety of street food, and one must-try is Donggang swordfish tempura. <button class="spk" onclick="readWord('If you only have one afternoon in Taipei, let’s head to Wanhua. What makes Bopiliao Historic Block special is its mix of architectural styles, so you can see Qing-dynasty shophouses and Japanese-era red-brick fronts on the same street. Next, visit Longshan Temple, where it is believed that the Old Man Under the Moon helps people find love. Not far away, Bangka Night Market offers a wide variety of street food, and one must-try is Donggang swordfish tempura.')">🔊</button><br><b>評分重點：</b>(1) 用空間移動的訊號詞（Next／Not far away）串起三個景點，與課文 Oct. 23 的組織同構；(2) What 引導的名詞子句當主詞時視為單數，動詞用 is；(3) It is believed that 後接完整子句，亦可改寫為 The Old Man Under the Moon is believed to help people find love。</div>
+  </div>
+</section>
+
+<!-- ============ TAB 7 ============ -->
+<section id="focus">
+  <h2>📐 Language in Focus</h2>
+
+  <h3>一、Oct. 22｜複數不定代名詞的比較</h3>
+  <div class="card">
+    <p><b>範圍不限定</b></p>
+    <table>
+      <tr><th>列舉兩類</th><th>列舉三類</th></tr>
+      <tr><td>▲▲▲　●●●●　…<br>Some … Others …<br>Some … Some …</td><td>▲▲▲　∎∎∎　●●　…<br>Some … Others … Still others …</td></tr>
+    </table>
+    <p>Some … Others … 用於總數範圍未限定，僅舉例其中兩類時，意指「一些…，另一些…」，Others 等同於「Other + 複數名詞」。此句型亦可用 Some … Some … 取代。若有三類，則可以用 Some … Others … Still others … 句型表示。要記得寫作單句時，要在 others、some 和 still others 前面加上連接詞如 and 或 but 等。</p>
+    <p>• Some believe workers here (in Bopiliao) used to peel tree bark from imported wood, or peel animal skins. Others believe the name came from the Taiwanese pronunciation of the area's older Chinese names, such as Fupiliao or Beipiliao. <button class="spk" onclick="readWord('Some believe workers here used to peel tree bark from imported wood, or peel animal skins. Others believe the name came from the Taiwanese pronunciation of the area’s older Chinese names, such as Fupiliao or Beipiliao.')">🔊</button><br><span class="zh">→ 課文第 11~14 行提到剝皮寮的名稱由來眾說紛紜，而這裡僅介紹其中兩種可能。</span></p>
+    <p>• I have lots of apples. Some are good to eat, but others/some are going bad. <button class="spk" onclick="readWord('I have lots of apples. Some are good to eat, but others are going bad.')">🔊</button><br><span class="zh">我有很多蘋果。有些還可以吃，有一些則快壞了。</span></p>
+    <p>• There are many types of animals in this zoo. Some animals only eat meat; others only eat plants, and still others eat both meat and plants. <button class="spk" onclick="readWord('There are many types of animals in this zoo. Some animals only eat meat; others only eat plants, and still others eat both meat and plants.')">🔊</button><br><span class="zh">這間動物園有很多種動物，有些動物只吃肉；有些只吃植物；還有一些兩種都吃。</span></p>
+    <p><b>範圍限定</b></p>
+    <table>
+      <tr><th>只有兩類</th><th>只有三類</th></tr>
+      <tr><td>▲▲▲　●●●<br>Some of … The others …</td><td>▲▲▲　∎∎∎　●●<br>Some of … Others … The others …</td></tr>
+    </table>
+    <p>Some of … The others … 用於指涉特定範圍的人或物，意指「其中一些…，其餘…」。The others 等同於 The rest，指的是「特定範圍中剩餘的部分」。要記得寫作單句時，須在 the others 前面加上連接詞如 and 或 but 等。</p>
+    <p>• Some of the English papers I turned in this year received high scores, but the others I did poorly on. <button class="spk" onclick="readWord('Some of the English papers I turned in this year received high scores, but the others I did poorly on.')">🔊</button><br><span class="zh">今年我繳交的英文報告中有些得到了高分，但其他的分數很差。</span></p>
+    <p>• Some of the students are drawing; others are reading books, and the others are playing outside. <button class="spk" onclick="readWord('Some of the students are drawing; others are reading books, and the others are playing outside.')">🔊</button><br><span class="zh">有些學生正在畫畫；有些在看書；其他的則在外面玩。</span></p>
+  </div>
+
+  <h3>二、Oct. 23｜It + beV + believed／said／reported／thought + that + S + V …</h3>
+  <div class="card">
+    <p>本句型意為「據信…／據說…／據報導…／被認為…」，用於表達客觀的事實及眾人的意見或說法，搭配使用的動詞具有陳述或報告的性質。句中的 it 為虛主詞，that 所引導的名詞子句才是真正的主詞。</p>
+    <p>• It is believed that this god (Old Man Under the Moon) helps people find love.（課文第 9~10 行） <button class="spk" onclick="readWord('It is believed that this god helps people find love.')">🔊</button></p>
+    <p>• It is said that there are ghosts in this house. <button class="spk" onclick="readWord('It is said that there are ghosts in this house.')">🔊</button><br><span class="zh">據說這間房子鬧鬼。</span></p>
+    <p><b>2.</b> 也可以將本句型改寫為不定詞的結構：</p>
+    <table><tr><th>改寫公式</th></tr>
+      <tr><td>It + beV + believed/said/reported/thought + that + S + V …<br>→ S + beV + believed/said/reported/thought + to + V …</td></tr></table>
+    <p>• It is thought that drinking tea regularly can improve a person's health.<br>
+    → Drinking tea regularly is thought to improve a person's health. <button class="spk" onclick="readWord('It is thought that drinking tea regularly can improve a person’s health. Drinking tea regularly is thought to improve a person’s health.')">🔊</button><br><span class="zh">規律飲茶被認為有益健康。</span></p>
+    <p><b>Tips</b>　若 that 子句之動作發生時間早於 reported、believed、said 等動詞的時間，改寫的不定詞須寫為 to have p.p.。</p>
+    <p>• It is said that the famous cook opened his first restaurant at the age of 20.<br>
+    → The famous cook is said to have opened his first restaurant at the age of 20. <button class="spk" onclick="readWord('It is said that the famous cook opened his first restaurant at the age of twenty. The famous cook is said to have opened his first restaurant at the age of twenty.')">🔊</button><br><span class="zh">那位名廚據說在二十歲時開了第一家餐廳。</span></p>
+  </div>
+
+  <h3>三、句型辨識練習</h3>
+  <div id="focusQs"></div>
+
+  <div class="q">
+    <p class="stem">✍️ 改寫練習：請把下面這句改寫成不定詞結構。<br>It is believed that this god helps people find love.</p>
+    <textarea id="fw1" rows="2"></textarea>
+    <button class="btn" onclick="toggleSol('solFW1')">📖 參考解答：</button>
+    <div class="sol" id="solFW1"><b>參考答案：</b>This god is believed to help people find love. <button class="spk" onclick="readWord('This god is believed to help people find love.')">🔊</button><br><b>解說：</b>改寫程序：把 that 子句的主詞 this god 提到句首當真主詞，beV 隨之變成 is，動詞 helps 改為不定詞 to help。若 that 子句的動作比主要動詞更早發生，才需寫成 to have p.p.；此處兩者同時，故用 to help。</div>
+  </div>
+
+  <div class="q">
+    <p class="stem">✍️ 句型練習：請用 <b>Some … Others … Still others …</b> 寫 2–3 句，說明人們去萬華的不同理由。</p>
+    <textarea id="fw2" rows="3" placeholder="People visit Wanhua for different reasons. Some ..."></textarea>
+    <button class="btn" onclick="toggleSol('solFW2')">📖 參考解答：</button>
+    <div class="sol" id="solFW2"><b>參考寫法：</b>People visit Wanhua for different reasons. Some come to see the old shophouses in Bopiliao Historic Block; others come to pray at Longshan Temple, and still others come for the street food at Bangka Night Market. <button class="spk" onclick="readWord('People visit Wanhua for different reasons. Some come to see the old shophouses in Bopiliao Historic Block; others come to pray at Longshan Temple, and still others come for the street food at Bangka Night Market.')">🔊</button><br><b>評分重點：</b>(1) 總數範圍未限定，故用 Others／Still others，不可用 The others；(2) 寫成單句時，still others 前要加連接詞 and；(3) Others 等同 Other people，後面直接接動詞，不可再寫 Other others。</div>
+  </div>
+</section>
+<!-- ============ TAB 8 ============ -->
+<section id="analysis">
+  <h2>🧭 文體與組織分析</h2>
+
+  <h3>Passage 1（Oct. 22）：藏在熱鬧背後的老臺北</h3>
+  <div class="card">
+    <p><b>文體：</b>說明文 (Expository)，開頭帶描述文 (Descriptive) 的畫面鋪陳。</p>
+    <p>• 主體以現在式陳述長期為真的事實（is hidden、makes、can see、are now exhibition spaces），歷史背景才切過去式（was、came） → 非敘述文。</p>
+    <p>• 作者提供資訊與例證，並列出多種說法而不選邊（Some believe… Others believe… Still, no one knows for sure） → 非議論文。</p>
+    <p>• 雖有 narrow streets full of food scents and noisy crowds 的感官描寫，但只是為了與「古老街區」形成反差而鋪陳 → 非描述文。</p>
+    <p>• 以問句 When you think of Wanhua, what comes to mind? 開場，屬說明文常見的「喚起既有印象再推翻」手法。</p>
+    <p><b>組織方式：</b>Misconception → Correction（刻板印象與澄清）＋ Past-to-Present（今昔對照）＋ Multiple Explanations（眾說並陳）。</p>
+    <table>
+      <tr><th>段落</th><th>功能</th><th>關鍵語言標記</th></tr>
+      <tr><td>¶1</td><td>提問導入：先喚起「小吃與人潮」的既有印象，再用 In fact 推翻，點出老臺北藏在熱鬧背後</td><td>When you think of…, what comes to mind? / Maybe you picture… / In fact（轉折澄清）/ hidden behind this busy scene</td></tr>
+      <tr><td>¶2</td><td>支持論點一：剝皮寮的歷史與建築——過去因鄰近艋舺港而繁華，如今以多元建築風格著稱，老屋成為展覽空間</td><td>To understand…, we cannot miss… / Over 200 years ago（過去）/ because（因果）/ Now（今昔轉換）/ on one side… on the other（對比）</td></tr>
+      <tr><td>¶3</td><td>支持論點二：地名由來的眾說紛紜——拆解字義後並陳兩種說法，最後承認無解</td><td>How did…get its name? / There are several stories / bo pi means…, while liao means…（對比釋義）/ Some believe… Others believe… / such as / Still, no one knows for sure</td></tr>
+    </table>
+    <p><b>結構要點：</b>¶1 先破除刻板印象，¶2 回答「它有什麼」，¶3 回答「它的名字怎麼來」。作者在 ¶3 刻意不給答案，把懸念留給讀者，也替 Oct. 23 的實地走訪留下動機。</p>
+    <p><b>摘要 Summary：</b>完整四句摘要已改為「📚 Reading 架構總複習」頁籤中的摘要重組題，請在該處按壓排序後再點開參考解答對照。</p>
+  </div>
+
+  <h3>Passage 2（Oct. 23）：從信仰走到夜市</h3>
+  <div class="card">
+    <p><b>文體：</b>說明文 (Expository)，採導覽式寫法，帶有描述文的食物細節。</p>
+    <p>• 全篇現在式陳述景點的恆常特徵（is、can find、offers、gives），僅建造年代用過去式（was built） → 非敘述文。</p>
+    <p>• 目的在介紹三處地點的特色與必吃，不爭辯立場 → 非議論文。</p>
+    <p>• deep-fried until golden and crispy、Each bite gives you fish, egg, and crunch all at once 是感官描寫，但服務於「推薦」而非營造場景 → 非描述文。</p>
+    <p>• Next, let's head to… 用第一人稱複數祈使句帶路，屬導覽文的典型語態。</p>
+    <p><b>組織方式：</b>Spatial / Itinerary Order（空間與行程順序）＋ General-to-Specific（由整體到必吃單品）＋ Summary（三處合併收束）。</p>
+    <table>
+      <tr><th>段落</th><th>功能</th><th>關鍵語言標記</th></tr>
+      <tr><td>¶1</td><td>第一站龍山寺：建造年代與信仰地位 → 可看的銅鑄龍柱與細緻雕刻 → 上百尊神明，聚焦月老</td><td>Next, let's head to… / As one of Taipei's Three Great Temples / has been an important center（現在完成式表持續）/ including / It is believed that…</td></tr>
+      <tr><td>¶2</td><td>第二站艋舺夜市：先給整體（各式小吃與海鮮）→ 再聚焦單品（東港旗魚黑輪）→ 以口感收尾</td><td>Not far away（相對位置）/ another side of the area / a wide variety of / from… to…（列舉範圍）/ One must-try is… / until golden and crispy / all at once</td></tr>
+      <tr><td>¶3</td><td>總結：把兩天的三處地點合起來，以「踏入過去卻不離開現在」的對比收束全課</td><td>Together / show what makes Wanhua special / step into the past without leaving the present（對比）</td></tr>
+    </table>
+    <p><b>結構要點：</b>這一天以「腳步」當組織軸線：Next → Not far away → Together，讀者像跟著導覽走。末段同時點名 Bopiliao（前一天）與另外兩處，是跨兩天的共同收束，也呼應標題 Past and Present。</p>
+    <p><b>摘要 Summary：</b>完整四句摘要已改為「📚 Reading 架構總複習」頁籤中的摘要重組題，請在該處按壓排序後再點開參考解答對照。</p>
+  </div>
+
+  <h3>兩段對照一覽</h3>
+  <table>
+    <tr><th>比較項目</th><th>Oct. 22</th><th>Oct. 23</th></tr>
+    <tr><td>文體</td><td>說明文（開頭帶描述筆法）</td><td>說明文（導覽式寫法，帶食物描寫）</td></tr>
+    <tr><td>論述焦點</td><td>剝皮寮：歷史、建築、命名之謎</td><td>龍山寺與艋舺夜市：信仰與小吃</td></tr>
+    <tr><td>組織軸線</td><td>時間（過去→現在）與說法並陳</td><td>空間（一站接一站的行程順序）</td></tr>
+    <tr><td>關鍵連接語</td><td>In fact、Over 200 years ago、Now、on one side…on the other、while、Some…Others…、such as、Still</td><td>Next, let's head to、As、including、Not far away、from…to…、One must-try is、until、Together</td></tr>
+    <tr><td>收尾方式</td><td>懸而未決（no one knows for sure）</td><td>三處合併＋古今對比的金句</td></tr>
+  </table>
+
+  <h3>語言結構與生活活用</h3>
+  <div class="card">
+    <p>• <b>反差句型的兩種層次：</b>Maybe you picture… / In fact…（印象 vs. 事實）與 step into the past without leaving the present（過去 vs. 現在）——一課用兩種方式操作「古今反差」，正好呼應標題 Past and Present。</p>
+    <p>• <b>what 引導的名詞子句當主詞：</b>what comes to mind、what makes Bopiliao special、what makes Wanhua special——三處同一結構，視為單數，動詞用 is／comes；這是本課最值得整組搬進寫作的句型。</p>
+    <p>• <b>Some … Others … 的範圍判讀：</b>總數未限定用 Others／Still others；範圍限定才用 The others（＝The rest）。課文 ¶3 只介紹眾多說法中的兩種，所以用 Others 而非 The others。</p>
+    <p>• <b>代名詞與指涉 (anaphor)：</b>¶1 的 this busy scene 回指前一句的 narrow streets…and noisy crowds；¶3 的 its name 回指 Bopiliao；Oct. 23 末段的 They 回指三個地點——讀題時務必先釘住指涉對象。</p>
+    <p>• <b>home 的一詞多義 (polysemy)：</b>the temple is home to over 100 gods（…的所在地）／far from the comfort of their homes（住家）——be home to sth 是介紹景點與生態時的高頻說法。</p>
+    <p>• <b>as 的多重功能：</b>As one of Taipei's Three Great Temples（作為…身分）／such as（舉例）——同一個字在本課承擔兩種角色，判斷靠它後面接的成分。</p>
+    <p>• <b>被動語態的使用時機：</b>it was built in 1738、Fresh swordfish paste is wrapped around…and deep-fried——當「誰做的」不重要或不必說時，焦點放在物件本身，這在景點介紹與食譜說明中最常見。</p>
+    <p>• <b>生活活用：</b>come to mind、be close to、a mix of、a wide variety of、be home to、One must-try is、from A to B 七組可直接遷移到任何「介紹地方與美食」的口說與寫作題型。</p>
+  </div>
+</section>
+</main>
+<div id="toast"></div>
+<script>
+/* ---------- state ---------- */
+const S=JSON.parse(localStorage.getItem('u9state')||'{}');
+S.pts=S.pts||0;S.streak=S.streak||0;S.ok=S.ok||0;S.tot=S.tot||0;S.cat=S.cat||'noun';
+S.text=S.text||{};S.done=S.done||{};
+function save(){localStorage.setItem('u9state',JSON.stringify(S));}
+function wipe(){localStorage.removeItem('u9state');location.reload();}
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.style.display='block';
+ clearTimeout(t._t);t._t=setTimeout(()=>t.style.display='none',3500);}
+function toggleMenu(){const m=document.getElementById('menu');m.classList.toggle('open');
+ document.getElementById('menuBtn').textContent=m.classList.contains('open')?'✕ 關閉':'☰ 選單';}
+document.addEventListener('click',e=>{const m=document.getElementById('menu');
+ if(m.classList.contains('open')&&!m.contains(e.target)&&e.target.id!=='menuBtn')toggleMenu();});
+function go(id){document.querySelectorAll('main section').forEach(s=>s.classList.remove('active'));
+ document.getElementById(id).classList.add('active');window.scrollTo(0,0);toggleMenu();}
+function toggleScore(){document.getElementById('score').classList.toggle('show');}
+function toggleSol(id){document.getElementById(id).classList.toggle('show');}
+function award(n){S.pts+=n;S.ok++;S.tot++;S.streak++;S.pts+=Math.min(S.streak,5)*20;paint();save();boom();}
+function miss(){S.tot++;S.streak=0;paint();save();}
+function paint(){const p=document.getElementById('pts');p.textContent=S.pts;
+ p.classList.remove('pop');void p.offsetWidth;p.classList.add('pop');
+ document.getElementById('streak').textContent=S.streak;
+ document.getElementById('nok').textContent=S.ok;document.getElementById('ntot').textContent=S.tot;}
+
+/* ---------- speech ---------- */
+function speak(t,r){if(!window.speechSynthesis)return;speechSynthesis.cancel();
+ const u=new SpeechSynthesisUtterance(t);u.lang='en-US';u.rate=r;speechSynthesis.speak(u);}
+function readWord(t){speak(t,1.0);}
+function readSlow(t){speak(t,0.9);}
+function stopRead(){if(window.speechSynthesis)speechSynthesis.cancel();}
+
+/* ---------- fireworks ---------- */
+const cv=document.getElementById('fw'),cx=cv.getContext('2d');let ps=[];
+function sz(){cv.width=innerWidth;cv.height=innerHeight;}sz();addEventListener('resize',sz);
+const COLS=['#E2F1FF','#F3E8FF','#FCE7F3','#FFFBEB','#ECFDF5','#FFD6E8','#CDE9FF'];
+function boom(){if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+ const x=innerWidth/2,y=innerHeight/3;
+ for(let i=0;i<60;i++){const a=Math.random()*Math.PI*2,s=2+Math.random()*6;
+  ps.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s,a:1,c:COLS[i%COLS.length]});}}
+function loop(){cx.clearRect(0,0,cv.width,cv.height);
+ ps.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.vy+=0.08;p.a-=0.012;
+  cx.globalAlpha=Math.max(p.a,0);cx.fillStyle=p.c;cx.beginPath();cx.arc(p.x,p.y,3.5,0,7);cx.fill();});
+ ps=ps.filter(p=>p.a>0);cx.globalAlpha=1;requestAnimationFrame(loop);}loop();
+
+/* ---------- helpers ---------- */
+function esc(s){return s.replace(/\\/g,'\\\\').replace(/'/g,"\\'");}
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+
+/* ---------- generic MC ---------- */
+function mc(host,list,tag){
+ host.innerHTML=list.map((q,i)=>`<div class="q" id="${tag}${i}">
+  <p class="stem">${i+1}. ${q.s} <button class="spk" onclick="readWord('${esc(q.s.replace(/<[^>]+>/g,''))}')">🔊</button></p>
+  ${q.o.map((o,j)=>`<button class="opt" onclick="pick('${tag}',${i},${j})">(${'ABCD'[j]}) ${o}</button>`).join('')}
+  <button class="btn" onclick="toggleSol('${tag}s${i}')">📖 參考解答：</button>
+  <div class="sol" id="${tag}s${i}"><b>正解：(${'ABCD'[q.a]})</b> ${q.o[q.a]}<br>${q.e}</div></div>`).join('');
+ window['DATA_'+tag]=list;}
+function pick(tag,i,j){const q=window['DATA_'+tag][i];const box=document.getElementById(tag+i);
+ if(box.dataset.done)return;box.dataset.done=1;
+ const btns=box.querySelectorAll('.opt');btns.forEach((b,k)=>{if(k===q.a)b.classList.add('right');});
+ if(j===q.a){award(100);toast('✅ 答對！＋分');}else{btns[j].classList.add('wrong');miss();toast('❌ 再想想，看解答回推線索');}
+ document.getElementById(tag+'s'+i).classList.add('show');}
+
+/* ---------- TAB1 vocabulary ---------- */
+const VOCAB={
+ noun:{n:'名詞',items:[
+  {w:'neighborhood',z:'地區；街區',s:'This is a rich ____. You can tell by all the big houses and fancy cars.'},
+  {w:'port',z:'港；港口',s:'The fishing boat left the ____ early in the morning and came back full of fish.'},
+  {w:'exhibition',z:'展覽',s:'The science ____ at the museum included fun displays and activities for young students.'},
+  {w:'hut',z:'（簡陋的）小屋',s:'During the harvest, farmers slept in tiny ____s near the fields, far from the comfort of their homes.'},
+  {w:'faith',z:'（對神的）信仰',s:'After the terrible war, Tommy didn’t think it was possible that God existed, so he lost his ____.'},
+  {w:'column',z:'柱',s:'The building needs strong ____s to stand safely.'},
+  {w:'variety',z:'種種；各式各樣',s:'Taipei has a ____ of different restaurants—Japanese, Thai, Indian, and more.'},
+  {w:'scent',z:'氣味',s:'Maybe you picture narrow streets full of food ____s and noisy crowds.'},
+  {w:'dynasty',z:'王朝；朝代',s:'You can see Qing-____ Chinese shophouses on one side.'},
+  {w:'era',z:'紀元',s:'Western-style red-brick fronts from the Japanese ____ stand on the other side.'},
+  {w:'pronunciation',z:'（單詞或語言的）發音',s:'Others believe the name came from the Taiwanese ____ of the area’s older Chinese names.'},
+  {w:'carving',z:'雕刻品',s:'Visitors can find unique bronze dragon columns and detailed ____s here.'},
+  {w:'paste',z:'漿；糊',s:'Fresh swordfish ____ is wrapped around a piece of boiled egg.'},
+  {w:'crunch',z:'酥脆感；嘎吱聲',s:'Each bite gives you fish, egg, and ____ all at once.'}]},
+ adj:{n:'形容詞副詞',items:[
+  {w:'historic',z:'具有歷史意義的；歷史上著名的',s:'During Bryan’s trip to Italy, he visited a ____ castle that was built almost 500 years ago.'},
+  {w:'detailed',z:'細緻的',s:'Julius bought a ____ wooden box that took the artist months to make.'},
+  {w:'crispy',z:'酥脆的',s:'The fried chicken has ____ skin. It makes a light sound when you bite into it.'},
+  {w:'architectural',z:'建築的',s:'What makes Bopiliao special is its mix of ____ styles.'},
+  {w:'bronze',z:'青銅製的',s:'Visitors can find unique ____ dragon columns here.'},
+  {w:'Qing-dynasty',z:'清朝的',s:'You can see ____ Chinese shophouses on one side.'},
+  {w:'hidden',z:'被隱藏的',s:'In fact, one of Taipei’s oldest areas is ____ behind this busy scene.'},
+  {w:'noisy',z:'吵雜的',s:'Maybe you picture narrow streets full of food scents and ____ crowds.'}]},
+ verb:{n:'動詞',items:[
+  {w:'peel',z:'剝／削…的皮',s:'David ____ed the apple before he cut it into small pieces to make an apple pie.'},
+  {w:'wrap',z:'用…包／裹／圍',s:'Natalie carefully ____ped the gift so no one could see what was inside.'},
+  {w:'picture',z:'想像',s:'Maybe you ____ narrow streets full of food scents and noisy crowds.'},
+  {w:'miss',z:'錯過；遺漏',s:'To understand Wanhua’s history, we cannot ____ Bopiliao Historic Block.'},
+  {w:'allow',z:'允許；使有可能',s:'Some old buildings are now exhibition spaces that ____ visitors to learn about Wanhua’s history.'},
+  {w:'offers',z:'提供（三單）',s:'Not far away, Bangka Night Market ____ another side of the area.'},
+  {w:'deep-fried',z:'油炸（過去分詞）',s:'The paste is wrapped around a boiled egg and ____ until golden and crispy.'},
+  {w:'head',z:'前往',s:'Next, let’s ____ to Longshan Temple.'}]},
+ coll:{n:'慣用搭配詞',items:[
+  {w:'think of',z:'〔及物動詞片語 vt. phr.〕想到；想起，of 後接名詞或動名詞，不可直接接子句',s:'When you ____ Wanhua, what comes to mind?'},
+  {w:'come to mind',z:'〔動詞片語 v. phr.〕浮現腦海，主詞是「想到的內容」而非人，疑問句常寫 what comes to mind',s:'When you think of Wanhua, what ____s?'},
+  {w:'be close to',z:'〔形容詞＋介系詞 adj. + prep.〕靠近…，to 後接名詞，不可接原形動詞',s:'It was a busy commercial neighborhood because it ____ the port of Bangka.'},
+  {w:'a mix of',z:'〔名詞片語 n. phr.〕…的混合，of 後接複數名詞，整組作單數主詞',s:'What makes Bopiliao special is its ____ architectural styles.'},
+  {w:'on one side',z:'〔介系詞片語 prep. phr.〕在一邊，必須與 on the other 配對出現，單獨使用語意不完整',s:'You can see Qing-dynasty Chinese shophouses ____ and red-brick fronts on the other.'},
+  {w:'for sure',z:'〔副詞片語 adv. phr.〕確切地；肯定地，置句尾修飾動詞，常搭配 know',s:'Still, no one knows ____.'},
+  {w:'such as',z:'〔介系詞片語 prep. phr.〕例如，後接名詞（片語）舉例，不可接完整子句',s:'The area’s older Chinese names, ____ Fupiliao or Beipiliao, may be the origin.'},
+  {w:'head to',z:'〔不及物動詞＋介系詞 vi. + prep.〕前往…，to 後接地點名詞',s:'Next, let’s ____ Longshan Temple.'},
+  {w:'be home to',z:'〔動詞片語 v. phr.〕是…的所在地，主詞為地點，to 後接人或動植物，home 不加冠詞',s:'The temple is also ____ over 100 gods.'},
+  {w:'a variety of',z:'〔名詞片語 n. phr.〕各式各樣的…，of 後接複數名詞，亦可加 wide 加強（a wide variety of）',s:'Here, we can find ____ street food and seafood.'},
+  {w:'from A to B',z:'〔介系詞片語 prep. phr.〕從…到…，用來標示列舉的範圍兩端',s:'We can find street food ____ oyster omelets and rice noodles ____ shaved ice.'},
+  {w:'all at once',z:'〔副詞片語 adv. phr.〕同時；一次全部，置句尾修飾整個動作',s:'Each bite gives you fish, egg, and crunch ____.'},
+  {w:'step into',z:'〔及物動詞片語 vt. phr.〕踏入…，into 後接名詞，此處為「踏入過去」的隱喻用法',s:'They let visitors ____ the past without leaving the present.'},
+  {w:'not far away',z:'〔副詞片語 adv. phr.〕在不遠處，以前文提過的地點為基準，必須先有前一站',s:'____, Bangka Night Market offers another side of the area.'}]},
+ pat:{n:'重要句型',items:[
+  {w:'what comes to mind',z:'〔句型 what + V …〕what 引導名詞子句，本身即主詞，動詞用單數（comes）',s:'When you think of Wanhua, ____?'},
+  {w:'what makes Bopiliao special',z:'〔句型 what + make + O + adj.〕名詞子句當主詞視為單數，後面主要動詞用 is',s:'Now, ____ is its mix of architectural styles.'},
+  {w:'Some … Others …',z:'〔句型 Some … Others …〕總數範圍未限定，僅舉其中兩類；Others ＝ Other + 複數名詞',s:'____ believe workers peeled tree bark; ____ believe the name came from the Taiwanese pronunciation.'},
+  {w:'Still others',z:'〔句型 Some … Others … Still others …〕列舉三類時的第三項，寫成單句時前面要加 and',s:'Some animals only eat meat; others only eat plants, and ____ eat both.'},
+  {w:'Some of … The others …',z:'〔句型 Some of … The others …〕範圍限定；The others ＝ The rest，指特定範圍中剩下的全部',s:'____ the students are drawing, and ____ are playing outside.'},
+  {w:'It is believed that',z:'〔句型 It + beV + p.p. + that + S + V〕It 為虛主詞，that 子句才是真主詞，表「據信…」',s:'____ this god helps people find love.'},
+  {w:'is believed to help',z:'〔句型 S + beV + p.p. + to V〕由虛主詞句型改寫，動作同時發生用 to V',s:'This god ____ people find love.'},
+  {w:'is said to have opened',z:'〔句型 S + beV + p.p. + to have p.p.〕that 子句動作較早發生時的改寫形式',s:'The famous cook ____ his first restaurant at the age of 20.'},
+  {w:'As one of',z:'〔介系詞片語 As + N〕作為…之一，表身分或資格，後接名詞片語並以逗號與主要子句分開',s:'____ Taipei’s Three Great Temples, it was built in 1738.'},
+  {w:'has been',z:'〔句型 現在完成式 have/has + p.p.〕表從過去持續到現在的狀態',s:'It was built in 1738 and ____ an important center of local faith.'},
+  {w:'let visitors step',z:'〔句型 let + O + 原形 V〕使役動詞 let 後接受詞與原形動詞，不可加 to',s:'They ____ into the past without leaving the present.'},
+  {w:'without leaving',z:'〔句型 without + V-ing〕without 為介系詞表否定，後接動名詞，不可再加 not',s:'They let visitors step into the past ____ the present.'}]}
+};
+let CUR=[],SELW=null;
+function buildCats(){document.getElementById('catbar').innerHTML=Object.keys(VOCAB).map(k=>
+ `<button class="btn ${k===S.cat?'tabsel':''}" onclick="setCat('${k}')">${VOCAB[k].n}</button>`).join('');}
+function setCat(k){S.cat=k;save();buildCats();buildPractice();}
+function buildPractice(){
+ const items=VOCAB[S.cat].items;CUR=shuffle(items);SELW=null;
+ document.getElementById('wbbody').innerHTML=shuffle(items).map(it=>
+  `<button class="chip" data-w="${it.w}" onclick="selW(this)">${it.w} <span class="spk" onclick="event.stopPropagation();readWord('${esc(it.w)}')">🔊</span></button>`).join('');
+ document.getElementById('qlist').innerHTML=CUR.map((it,i)=>
+  `<div class="q"><p><span class="num">${i+1}</span> <span class="zh">💬 提示用中譯：${it.z}</span></p>
+   <p>${it.s.split('____').join(`<span class="slot" id="sl${i}" onclick="putW(${i})"></span>`)}
+   <button class="spk" onclick="readWord('${esc(it.s.split('____').join(it.w))}')">🔊</button></p>
+   <div class="sol" id="vs${i}"></div></div>`).join('');}
+function selW(b){document.querySelectorAll('.chip').forEach(c=>c.classList.remove('sel'));
+ b.classList.add('sel');SELW=b;}
+function putW(i){const sl=document.getElementById('sl'+i);
+ if(sl.textContent.trim()){const w=sl.dataset.filled;
+  document.querySelectorAll('.chip').forEach(c=>{if(c.dataset.w===w)c.classList.remove('used');});
+  sl.textContent='';sl.dataset.filled='';sl.className='slot';return;}
+ if(!SELW){toast('請先在 Word Bank 點選一個詞彙');return;}
+ sl.textContent=SELW.dataset.w;sl.dataset.filled=SELW.dataset.w;
+ SELW.classList.add('used');SELW.classList.remove('sel');SELW=null;}
+function checkPractice(){let first=null;
+ CUR.forEach((it,i)=>{const sl=document.getElementById('sl'+i),sol=document.getElementById('vs'+i);
+  const ok=(sl.dataset.filled||'').toLowerCase()===it.w.toLowerCase();
+  sl.classList.remove('right','wrong');sl.classList.add(ok?'right':'wrong');
+  sol.innerHTML=`<b>正解：</b>${it.w}（${it.z}）<button class="spk" onclick="readWord('${esc(it.w)}')">🔊</button><br>
+   <b>完整句：</b>${it.s.split('____').join('<b>'+it.w+'</b>')} <button class="spk" onclick="readWord('${esc(it.s.split('____').join(it.w))}')">🔊</button>`;
+  sol.classList.add('show');
+  if(ok)award(100);else{miss();if(!first)first=sl;}});
+ if(first)first.scrollIntoView({behavior:'smooth',block:'center'});else toast('🎉 全對！');}
+
+/* ---------- TAB2 cloze ---------- */
+const DD={4:'E',9:'C',13:'D',17:'A',21:'F',24:'B'};
+const DDOPT=[['A','columns'],['B','crunch'],['C','era'],['D','pronunciation'],['E','scents'],['F','variety']];
+const TYPED={1:'think of',2:'comes to mind',3:'picture',5:'Historic',6:'neighborhood',7:'port',8:'fronts',
+ 10:'exhibition',11:'stories',12:'hut',14:'Still',15:'for sure',16:'faith',18:'detailed',
+ 19:'is also home to',20:'side',22:'wrapped',23:'crispy',25:'all at once'};
+const HINT={1:'想到；想起',2:'浮現腦海（三單）',3:'想像',5:'具有歷史意義的',6:'地區；街區',7:'港；港口',
+ 8:'正面（複數）',10:'展覽',11:'說詞；說法（複數）',12:'簡陋的小屋',14:'儘管如此',15:'確切地；肯定地',
+ 16:'（對神的）信仰',18:'細緻的',19:'也是…的所在地',20:'方面',22:'包裹（被動）',23:'酥脆的',25:'全部一起'};
+const CLOZE=`<p>When you [1] Wanhua, what [2]（當你想到萬華時，腦中會浮現什麼畫面）? Maybe you [3] narrow streets full of food [4] and noisy crowds. In fact, one of Taipei's oldest areas is hidden behind this busy scene.</p>
+<p>To understand Wanhua's history, we cannot miss Bopiliao [5] Block（我們就不能不提到剝皮寮歷史街區）. Over 200 years ago, the area was a busy commercial [6] because it was close to the [7] of Bangka（這一帶因為靠近艋舺港，是一個繁忙的商業街區）. Now, what makes Bopiliao special is its mix of architectural styles. You can see Qing-dynasty Chinese shophouses on one side and Western-style red-brick [8] from the Japanese [9] on the other. Some old buildings are now [10] spaces（有些老建築現在已成為展覽空間）that allow visitors to learn about Wanhua's history.</p>
+<p>How did Bopiliao get its name? There are several [11]. In Chinese, bo pi means "to peel skin or bark," while liao means "a simple [12]." Some believe workers here used to peel tree bark from imported wood, or peel animal skins. Others believe the name came from the Taiwanese [13] of the area's older Chinese names, such as Fupiliao or Beipiliao. [14], no one knows [15]（沒有人能肯定這個地名的由來為何）.</p>
+<p>Next, let's head to Longshan Temple. As one of Taipei's Three Great Temples, it was built in 1738 and has been an important center of local [16]（建於 1738 年的龍山寺一直是當地信仰的重要中心）. Visitors can find unique bronze dragon [17] and [18] carvings（細緻的雕刻）here. The temple [19] over 100 gods（這間廟也是一百多尊神明的所在地）, including the popular Old Man Under the Moon. It is believed that this god helps people find love.</p>
+<p>Not far away, Bangka Night Market offers another [20] of the area. Here, we can find a wide [21] of street food and seafood, from oyster omelets and rice noodles to shaved ice. One must-try is Donggang swordfish tempura. Fresh swordfish paste is [22] around a piece of boiled egg and deep-fried until golden and [23]. Each bite gives you fish, egg, and [24] [25]（全部一起）.</p>
+<p>Together, Bopiliao, Longshan Temple, and Bangka Night Market show what makes Wanhua special. They let visitors step into the past without leaving the present.</p>`;
+function buildCloze(){
+ let h=CLOZE;
+ for(let n=25;n>=1;n--){
+  let rep;
+  if(DD[n]){rep=`<span class="num">${n}</span><select class="dd" id="c${n}"><option value=""></option>`+
+    DDOPT.map(o=>`<option value="${o[0]}">(${o[0]}) ${o[1]}</option>`).join('')+`</select>`;}
+  else{rep=`<span class="num">${n}</span><input class="blank" id="c${n}"><span class="zh">（${HINT[n]}）</span>`;}
+  h=h.split('['+n+']').join(rep);}
+ document.getElementById('clozeText').innerHTML=h;
+ document.querySelectorAll('#clozeText input,#clozeText select').forEach(el=>{
+  if(S.text[el.id])el.value=S.text[el.id];
+  el.addEventListener('change',()=>{S.text[el.id]=el.value;save();});});}
+function norm(s){return (s||'').toLowerCase().replace(/[’]/g,"'").replace(/\s+/g,' ').trim();}
+function checkCloze(){let first=null,got=0;
+ for(let n=1;n<=25;n++){const el=document.getElementById('c'+n);
+  const ans=DD[n]?DD[n]:TYPED[n];const ok=DD[n]?el.value===ans:norm(el.value)===norm(ans);
+  el.classList.remove('right','wrong');el.classList.add(ok?'right':'wrong');
+  if(ok){got+=4;award(50);}else{miss();if(!first)first=el;}}
+ toast(got===100?'🎉 25 格全對，100 分！':'📝 本次得分：'+got+' / 100');
+ if(first)first.scrollIntoView({behavior:'smooth',block:'center'});}
+
+/* ---------- TAB3 ---------- */
+const GENRE=[
+ {s:'Oct. 22（第一天課文）最適合歸入哪一種文體？',o:['議論文','說明文','敘述文','描述文'],a:1,
+  e:'主體以現在式陳述長期為真的事實（is hidden、makes、can see），歷史背景才切過去式；作者只提供資訊與多種說法，不爭辯立場。<br><b>為何其他錯：</b>議論文須有被辯護的主張；敘述文須有事件時序；描述文重感官畫面，narrow streets full of food scents 只是為了與「古老街區」形成反差而鋪陳。'},
+ {s:'Oct. 23（第二天課文）主要用什麼當組織軸線？',o:['時間先後','空間與行程順序','問題與解決','正反對照'],a:1,
+  e:'Next, let’s head to… → Not far away… → Together…，讀者像跟著導覽一站一站走，屬典型的 spatial／itinerary order。<br><b>為何其他錯：</b>除了建造年代外沒有時間推移；沒有待解問題；兩個景點是並列介紹而非正反對立。'},
+ {s:'Oct. 22 第一段的 In fact 在結構上的功能是？',o:['補充第二個例子','推翻前面的刻板印象，帶出全段主張','說明原因','總結全文'],a:1,
+  e:'作者先用 Maybe you picture… 喚起「小吃與人潮」的既有印象，再用 In fact 轉折，點出老臺北藏在熱鬧背後——這是說明文「先立後破」的常見開場。<br><b>為何其他錯：</b>它沒有舉例、沒有給原因，也不是收尾句。'}];
+const SEQS={
+ A:{items:['提問導入：先喚起「小吃與人潮」的印象，再用 In fact 推翻，點出老臺北藏在熱鬧背後',
+   '支持論點一：剝皮寮的歷史與建築——昔日因鄰近艋舺港而繁華，今以多元建築風格著稱，老屋成為展覽空間',
+   '支持論點二：地名由來眾說紛紜——拆解 bo pi 與 liao 的字義後並陳兩種說法，最後承認無解'],ord:[0,1,2]},
+ B:{items:['第一站龍山寺：建於 1738 年，是當地信仰的重要中心',
+   '寺中可看：銅鑄龍柱、細緻雕刻，以及上百尊神明（含月下老人）',
+   '第二站艋舺夜市：不遠處，各式小吃與海鮮，從蚵仔煎、米粉到刨冰',
+   '必吃單品：東港旗魚黑輪，旗魚漿包水煮蛋，油炸到金黃酥脆',
+   '總結：三處合起來，讓人踏入過去卻不離開現在'],ord:[0,1,2,3,4]},
+ R22:{items:['To understand Wanhua’s history, we cannot miss Bopiliao Historic Block, which was a busy commercial neighborhood over 200 years ago because it was close to the port of Bangka.',
+   'There are several stories about how Bopiliao got its name, but still, no one knows for sure.',
+   'In fact, one of Taipei’s oldest areas is hidden behind the busy scene of Wanhua.',
+   'What makes Bopiliao special is its mix of architectural styles, and some old buildings are now exhibition spaces that allow visitors to learn about Wanhua’s history.'],ord:[2,0,3,1]},
+ R23:{items:['At Bangka Night Market, we can find a wide variety of street food, and one must-try is Donggang swordfish tempura, which is deep-fried until golden and crispy.',
+   'Longshan Temple and Bangka Night Market offer two more sides of Wanhua.',
+   'Together, Bopiliao, Longshan Temple, and Bangka Night Market let visitors step into the past without leaving the present.',
+   'As one of Taipei’s Three Great Temples, Longshan Temple has been an important center of local faith, and it is believed that the Old Man Under the Moon helps people find love.'],ord:[1,3,0,2]}};
+const PICK={};
+function buildSeq(k){const box=document.getElementById('seq'+k);PICK[k]=[];
+ const idx=shuffle(SEQS[k].items.map((_,i)=>i));
+ box.innerHTML=idx.map(i=>`<div class="seqitem" data-i="${i}" onclick="pickSeq('${k}',this)">${SEQS[k].items[i]}</div>`).join('');}
+function pickSeq(k,el){if(el.classList.contains('picked'))return;
+ el.classList.add('picked');PICK[k].push(+el.dataset.i);
+ el.innerHTML='<b>'+(PICK[k].length)+'.</b> '+el.innerHTML;}
+function resetSeq(k){buildSeq(k);}
+function checkSeq(k){const ord=SEQS[k].ord;
+ if(PICK[k].length<ord.length){toast('請先點選全部句子');return;}
+ const ok=PICK[k].every((v,i)=>v===ord[i]);
+ if(ok){award(150);toast('✅ 順序正確！');}else{miss();toast('❌ 順序還不對，看解答回推訊號詞');}
+ document.getElementById('solSeq'+k).classList.add('show');}
+const FOUR=[
+ {s:'What is the main purpose of the whole article?',o:['To teach readers how to cook night-market food.','To show that Wanhua keeps both its old history and its busy present life.','To argue that Longshan Temple is better than Bopiliao.','To tell the story of one family living in Bangka.'],a:1,
+  e:'<b>層次一 主要資訊。</b>標題 Past and Present 與末句 step into the past without leaving the present 一頭一尾相呼應，兩天分別處理「過去」與「現在」。<br><b>為何其他錯：</b>(A) 只提到食物的口感，沒有做法；(C) 文章並列介紹，沒有比較優劣；(D) 全文無人物與情節。'},
+ {s:'Why does the writer begin with "When you think of Wanhua, what comes to mind?"',o:['To ask readers to answer in writing.','To bring up a common picture of Wanhua and then correct it.','To show that the writer has never been to Wanhua.','To explain the meaning of the name Wanhua.'],a:1,
+  e:'<b>層次三 訊息與細節邏輯。</b>問句先喚起既有印象（Maybe you picture…），緊接著用 In fact 推翻，帶出全段主張。<br><b>為何其他錯：</b>(A) 是修辭性問句，不等待回答；(C) 全文描述細緻，顯示作者熟悉當地；(D) 解釋地名的是剝皮寮而非萬華。'},
+ {s:'Which sentence could be taken out of the second paragraph WITHOUT changing the main idea?',o:['To understand Wanhua’s history, we cannot miss Bopiliao Historic Block.','Now, what makes Bopiliao special is its mix of architectural styles.','You can see Qing-dynasty Chinese shophouses on one side.','Some old buildings are now exhibition spaces that allow visitors to learn about Wanhua’s history.'],a:2,
+  e:'<b>層次二 次要資訊。</b>清朝街屋只是「多元建築風格」底下的其中一個例子，刪掉不影響該段主張。<br><b>為何其他錯：</b>(A) 是帶讀者進入剝皮寮的主張句；(B) 是段落主張句；(D) 說明老屋的現今用途，連到「讓訪客認識歷史」這條線。'},
+ {s:'In "one of Taipei’s oldest areas is hidden behind this busy scene," what does "this busy scene" refer to?',o:['The narrow streets full of food scents and noisy crowds','The exhibition spaces in old buildings','The port of Bangka 200 years ago','The night market at Longshan Temple'],a:0,
+  e:'<b>層次四 語言結構（anaphor 代名詞回指）。</b>解題程序：往前找最近的名詞組 → 確認語意相容。前一句正是 narrow streets full of food scents and noisy crowds。<br><b>為何其他錯：</b>(B) 出現在下一段；(C) 是兩百年前的過去；(D) 是第二天的內容。'},
+ {s:'Why does the writer use "Some believe … Others believe …" in the third paragraph?',o:['To show that one explanation is certainly correct','To show that there is more than one explanation and none is proven','To compare Chinese and Taiwanese grammar','To tell readers which story is the oldest'],a:1,
+  e:'<b>層次四 語言結構（複數不定代名詞）。</b>Some … Others … 用於總數未限定、僅舉其中兩類，暗示說法不只兩種；末句 Still, no one knows for sure 再確認「皆未證實」。<br><b>為何其他錯：</b>(A)(D) 與 no one knows for sure 矛盾；(C) 文中只借字義解釋地名，不是語法比較。'},
+ {s:'"The temple is also home to over 100 gods." Here "home to" means',o:['a house where people sleep','the place where something or someone is found','a feeling of being comfortable','a way back to one’s country'],a:1,
+  e:'<b>層次四 一詞多義 polysemy。</b>be home to sth 是介紹景點、生態時的固定說法，表「是…的所在地」，與字彙小補帖中 far from the comfort of their homes（住家）的 home 不同義。<br><b>為何其他錯：</b>(A)(C)(D) 都是 home 的其他義項，放進此句語意不通。'},
+ {s:'What does the last sentence "They let visitors step into the past without leaving the present" mean?',o:['Visitors must choose between old places and new places.','Visitors can enjoy history and modern life in the same area.','Visitors should not visit the night market.','Visitors can travel back in time.'],a:1,
+  e:'<b>層次四 隱喻 metaphor。</b>step into the past 是把「認識歷史」寫成空間移動的比喻，without leaving the present 則點明兩者同時成立，正好收束標題的 Past and Present。<br><b>為何其他錯：</b>(A) 句意是兩者兼得而非二選一；(C) 夜市正是推薦景點之一；(D) 這是比喻，不是真的時空旅行。'}];
+const GSAT=[
+ {s:'【克漏字】Now, what ____ Bopiliao special is its mix of architectural styles.',o:['make','makes','making','to make'],a:1,
+  e:'what 引導的名詞子句在此當主詞，視為單數，故動詞用 makes；make + O + adj. 為受詞補語結構。<br><b>為何其他錯：</b>(A) 主詞動詞不一致；(C)(D) 無法作子句的主要動詞。'},
+ {s:'【克漏字】Some believe workers peeled tree bark. ____ believe the name came from the Taiwanese pronunciation.',o:['Other','The others','Others','Another'],a:2,
+  e:'總數範圍未限定、僅舉其中兩類，須用 Others（＝Other people）。<br><b>為何其他錯：</b>(A) Other 為形容詞，後面必須接名詞；(B) The others 用於範圍限定、指「其餘全部」；(D) Another 指「另一個」單數。'},
+ {s:'【克漏字】It is believed ____ this god helps people find love.',o:['that','what','which','it'],a:0,
+  e:'此句型中 It 為虛主詞，真主詞是 that 引導的名詞子句，連接詞只能用 that。<br><b>為何其他錯：</b>(B) what 本身要在子句中當主詞或受詞，此處子句成分已齊全；(C) which 引導形容詞子句；(D) it 不是連接詞。'},
+ {s:'【閱讀測驗】What is the main idea of the article?',o:['Wanhua is only famous for its night market food.','Wanhua shows both Taipei’s history and its living present.','Wanhua has changed so much that nothing old is left.','Wanhua is the newest area in Taipei.'],a:1,
+  e:'兩天課文分別處理剝皮寮的歷史與龍山寺、夜市的現今生活，末段用 step into the past without leaving the present 合併。<br><b>為何其他錯：</b>(A) 第一段就用 In fact 推翻這個印象；(C) 老街區與古寺都保存著；(D) 課文說它是 one of Taipei’s oldest areas。'},
+ {s:'【閱讀測驗】Which of the following is NOT true?',o:['Bopiliao was close to the port of Bangka.','Longshan Temple was built in 1738.','Everyone agrees on where the name Bopiliao came from.','Bangka Night Market sells both street food and seafood.'],a:2,
+  e:'課文明寫 Still, no one knows for sure，且用 Some believe… Others believe… 並陳兩種未證實的說法。<br><b>解題程序：</b>NOT true 題逐一把選項配回原句，特別注意 everyone／all 這類全稱詞最常被用來設陷阱。'},
+ {s:'【閱讀測驗】What is the writer’s attitude toward Wanhua?',o:['Appreciative and inviting','Worried and critical','Bored and distant','Angry and disappointed'],a:0,
+  e:'let’s head to、One must-try is、a big story 式的推薦語氣，加上末句的正面收束，都指向「欣賞並邀請讀者同行」。<br><b>為何其他錯：</b>(B)(C)(D) 全文找不到任何批評、厭倦或憤怒的用語。'}];
+const MIX=[
+ {s:'Why does the writer mention both Qing-dynasty shophouses and Japanese-era red-brick fronts?',
+  o:['To show that the old buildings are falling down.','To show that Bopiliao mixes styles from different periods.','To prove that Japanese buildings are better.','To explain why the area was once a port.'],a:1,
+  e:'on one side… on the other 把兩種不同時期的建築並置，正是前一句 a mix of architectural styles 的具體說明。<br><b>為何其他錯：</b>(A) 課文說老屋已成展覽空間；(C) 文中沒有優劣比較；(D) 港口是更早的歷史背景，與建築風格無關。'},
+ {s:'What is the main purpose of the final paragraph?',
+  o:['To introduce a fourth place to visit.','To warn readers about crowds in Wanhua.','To bring the three places together and sum up what makes Wanhua special.','To explain how to get to Longshan Temple.'],a:2,
+  e:'Together 把兩天提到的三處合併，並以 step into the past without leaving the present 收束，功能是總結而非補充。<br><b>為何其他錯：</b>(A) 沒有新地點；(B) 沒有任何警告；(D) 沒有交通資訊。'}];
+
+/* ---------- TAB4 board ---------- */
+const BOARD=[
+ {t:'印象',q:'What does the writer think most people picture when they think of Wanhua?',o:['Quiet parks and wide roads','Narrow streets full of food scents and noisy crowds','Tall office buildings','Empty old houses'],a:1,e:'¶1 的 Maybe you picture… 先給既有印象，接著用 In fact 轉折，點出老臺北藏在熱鬧背後。'},
+ {t:'歷史',q:'Why was the Bopiliao area a busy commercial neighborhood 200 years ago?',o:['Because it was close to the port of Bangka','Because it had many temples','Because it was the capital of Taiwan','Because it had a night market'],a:0,e:'because 直接給原因：靠近艋舺港，貨物與人潮匯聚，商業自然興盛。'},
+ {t:'短答',q:'短答：剝皮寮最特別的地方是什麼？（請用課文的英文片語回答）',ans:'its mix of architectural styles',e:'What makes Bopiliao special is… 是本課最值得整組搬進寫作的句型；what 引導的名詞子句當主詞視為單數，動詞用 is。'},
+ {t:'建築',q:'What two kinds of buildings can visitors see in Bopiliao?',o:['Qing-dynasty shophouses and Japanese-era red-brick fronts','Modern glass towers and wooden huts','Only Western-style houses','Only Chinese temples'],a:0,e:'on one side… on the other 把兩種不同時期的建築並置，是 a mix of architectural styles 的具體例證。'},
+ {t:'命名',q:'In Chinese, what does "liao" mean?',o:['A busy port','A simple hut','To peel skin or bark','An old temple'],a:1,e:'課文用 bo pi means…, while liao means… 的對比釋義拆解地名；while 在此表對照而非時間。'},
+ {t:'短答',q:'短答：課文介紹了哪兩種關於剝皮寮地名由來的說法？（中文作答即可）',ans:'一是工人在此剝去進口木材的樹皮或剝動物皮；二是地名來自 Fupiliao 或 Beipiliao 等舊名的臺語發音。',e:'兩種說法由 Some believe… Others believe… 帶出，屬總數未限定的列舉；末句 Still, no one knows for sure 表示皆未證實。'},
+ {t:'信仰',q:'What makes Longshan Temple an important place in Wanhua?',o:['It was built last year.','It has been an important center of local faith since 1738.','It is the only temple in Taipei.','It sells street food.'],a:1,e:'現在完成式 has been 表從 1738 年持續到現在的狀態，這正是它成為 Three Great Temples 之一的原因。'},
+ {t:'月老',q:'What is the Old Man Under the Moon believed to do?',o:['To protect students before exams','To help people find love','To bring rain to farmers','To guard the temple gate'],a:1,e:'It is believed that… 表「據信…」，It 為虛主詞，that 子句才是真主詞；亦可改寫為 This god is believed to help people find love。'},
+ {t:'夜市',q:'What can visitors find at Bangka Night Market?',o:['Only shaved ice','A wide variety of street food and seafood','Only oyster omelets','Only bronze carvings'],a:1,e:'a wide variety of 後接複數名詞，再用 from… to… 標出列舉範圍的兩端，從蚵仔煎、米粉到刨冰。'},
+ {t:'短答',q:'短答：東港旗魚黑輪是怎麼做成的？（中文作答即可）',ans:'新鮮的旗魚漿包裹著一塊水煮蛋，再下鍋油炸到金黃酥脆。',e:'課文用被動語態 is wrapped around…and deep-fried，因為「誰做的」不重要，焦點在食物本身；until 表「直到…的程度」。'},
+ {t:'句型',q:'Which sentence is correct?',o:['They let visitors to step into the past.','They let visitors stepping into the past.','They let visitors step into the past.','They let visitors stepped into the past.'],a:2,e:'let 為使役動詞，受詞後接原形動詞，不可加 to、不可用分詞或過去式。'},
+ {t:'摘要',q:'Which sentence works best as the LAST sentence of a summary of the whole article?',o:['Bopiliao was close to the port of Bangka.','They let visitors step into the past without leaving the present.','Longshan Temple was built in 1738.','Koalas are picky eaters.'],a:1,e:'結論句須把全文拉高成通則並呼應標題 Past and Present；其餘兩個選項是具體史實，最後一個與本課無關。'}];
+let POS=-1;
+function drawBoard(){document.getElementById('boardGrid').innerHTML=BOARD.map((b,i)=>
+ `<div class="sq ${i===POS?'here':''} ${S.done['b'+i]?'done':''}">${i+1}<br>${b.t}</div>`).join('');}
+function roll(){const d=1+Math.floor(Math.random()*4);
+ POS=(POS+d)%BOARD.length;
+ document.getElementById('diceMsg').textContent=`🎲 擲出 ${d} 點，前進到第 ${POS+1} 格（${BOARD[POS].t}）`;
+ drawBoard();showBQ();}
+function resetBoard(){POS=-1;S.done={};save();drawBoard();
+ document.getElementById('boardQ').innerHTML='';document.getElementById('diceMsg').textContent='';}
+function showBQ(){const b=BOARD[POS],h=document.getElementById('boardQ');
+ if(b.o){h.innerHTML=`<div class="q" id="bq"><p class="stem">第 ${POS+1} 格｜${b.q}
+   <button class="spk" onclick="readWord('${esc(b.q)}')">🔊</button></p>
+   ${b.o.map((o,j)=>`<button class="opt" onclick="bAns(${j})">(${'ABCD'[j]}) ${o}</button>`).join('')}
+   <button class="btn" onclick="toggleSol('bsol')">📖 參考解答：</button>
+   <div class="sol" id="bsol"><b>正解：(${'ABCD'[b.a]})</b> ${b.o[b.a]}<br>${b.e}</div></div>`;}
+ else{h.innerHTML=`<div class="q" id="bq"><p class="stem">第 ${POS+1} 格｜${b.q}</p>
+   <textarea rows="2" id="bshort"></textarea>
+   <button class="btn" onclick="toggleSol('bsol')">📖 參考解答：</button>
+   <div class="sol" id="bsol"><b>參考答案：</b>${b.ans}<br>${b.e}</div></div>`;}}
+function bAns(j){const b=BOARD[POS],box=document.getElementById('bq');
+ if(box.dataset.done)return;box.dataset.done=1;
+ const btns=box.querySelectorAll('.opt');btns.forEach((x,k)=>{if(k===b.a)x.classList.add('right');});
+ if(j===b.a){btns[j].classList.add('right');award(120);S.done['b'+POS]=1;save();toast('✅ 答對，保留這一格！');}
+ else{btns[j].classList.add('wrong');miss();toast('❌ 這一格先留著，下次再攻');}
+ drawBoard();document.getElementById('bsol').classList.add('show');}
+
+/* ---------- TAB6 lists ---------- */
+const VOC22=[['historic','具有歷史意義的；歷史上著名（或重要）的','During Bryan’s trip to Italy, he visited a historic castle that was built almost 500 years ago.'],
+ ['history','歷史','To understand Wanhua’s history, we cannot miss Bopiliao Historic Block.'],
+ ['neighborhood','地區；街區','This is a rich neighborhood. You can tell by all the big houses and fancy cars.'],
+ ['port','港；港口','The fishing boat left the port early in the morning and came back full of fish.'],
+ ['exhibition','展覽','The science exhibition at the museum included fun displays and activities for young students.'],
+ ['peel','剝／削…的皮','David peeled the apple before he cut it into small pieces to make an apple pie.'],
+ ['hut','（簡陋的）小屋','During the harvest, farmers slept in tiny huts near the fields, far from the comfort of their homes.']];
+const PK22=[['scent','氣味','Maybe you picture narrow streets full of food scents and noisy crowds.'],
+ ['architectural','建築的','What makes Bopiliao special is its mix of architectural styles.'],
+ ['dynasty','王朝；朝代','You can see Qing-dynasty Chinese shophouses on one side.'],
+ ['Qing-dynasty','清朝的','You can see Qing-dynasty Chinese shophouses on one side.'],
+ ['era','紀元','Western-style red-brick fronts from the Japanese era stand on the other side.'],
+ ['pronunciation','（單詞或語言的）發音','Others believe the name came from the Taiwanese pronunciation of the area’s older Chinese names.']];
+const VOC23=[['faith','（對神的）信仰','After the terrible war, Tommy didn’t think it was possible that God existed, so he lost his faith.'],
+ ['column','柱','The building needs strong columns to stand safely.'],
+ ['detailed','細緻的','Julius bought a detailed wooden box that took the artist months to make.'],
+ ['variety','種種；各式各樣','Taipei has a variety of different restaurants—Japanese, Thai, Indian, and more.'],
+ ['a variety of sth','各式各樣的…','Here, we can find a wide variety of street food and seafood.'],
+ ['wrap','用…包／裹／圍','Natalie carefully wrapped the gift so no one could see what was inside.'],
+ ['crispy','酥脆的','The fried chicken has crispy skin. It makes a light sound when you bite into it.']];
+const PK23=[['bronze','青銅製的','Visitors can find unique bronze dragon columns here.'],
+ ['carving','雕刻品','Visitors can find unique bronze dragon columns and detailed carvings here.'],
+ ['including','包括；包含','The temple is also home to over 100 gods, including the popular Old Man Under the Moon.'],
+ ['paste','漿；糊','Fresh swordfish paste is wrapped around a piece of boiled egg.'],
+ ['crunch','酥脆感；（東西被輾碎或咬下時的）嘎吱聲','Each bite gives you fish, egg, and crunch all at once.']];
+function buildList(id,list){document.getElementById(id).innerHTML=list.map(x=>
+ `<p><b>${x[0]}</b> <button class="spk" onclick="readWord('${esc(x[0])}')">🔊</button> <span class="zh">${x[1]}</span><br>
+  ${x[2]} <button class="spk" onclick="readWord('${esc(x[2])}')">🔊</button></p>`).join('');}
+const LIFE=[
+ {s:'A friend says Wanhua is only a place for cheap food. How would the writer answer?',
+  o:['That’s right; there is nothing else there.','In fact, one of Taipei’s oldest areas is hidden behind this busy scene.','Wanhua has no night market at all.','Wanhua is the newest part of Taipei.'],a:1,
+  e:'這正是 ¶1 的寫法：先承認熱鬧的印象，再用 In fact 補上被忽略的另一面。<br><b>為何其他錯：</b>(A) 與全文主旨相反；(C) 艋舺夜市是第二天的重點；(D) 課文說它是 one of Taipei’s oldest areas。'},
+ {s:'You have 20 minutes left in Wanhua and want to try one famous snack. What does the article suggest?',
+  o:['Shaved ice only','Donggang swordfish tempura','Apple pie','Fried chicken'],a:1,
+  e:'課文用 One must-try is… 明確推薦東港旗魚黑輪，並描述旗魚漿包水煮蛋、炸到金黃酥脆的口感。<br><b>為何其他錯：</b>(A) 刨冰只是列舉範圍的一端，不是 must-try；(C)(D) 出現在字彙例句中，不是萬華的小吃。'},
+ {s:'A classmate asks why no one can be sure about the name Bopiliao. What can you tell him?',
+  o:['Because the name is written in English.','Because there are several stories and none of them is proven.','Because the area has no history.','Because the government changed the name last year.'],a:1,
+  e:'There are several stories ＋ Some believe… Others believe… ＋ Still, no one knows for sure，三個訊號合起來就是「說法多元且皆未證實」。<br><b>為何其他錯：</b>(A) 地名來自中文與臺語發音；(C) 課文說它有兩百多年歷史；(D) 文中完全沒有這項資訊。'}];
+const FOCUS=[
+ {s:'Choose the correct one: I have lots of apples. Some are good to eat, but ____ are going bad.',o:['the others','others','another','other'],a:1,
+  e:'總數範圍未限定（lots of apples），僅舉其中兩類，故用 others（亦可用 some）。<br><b>為何其他錯：</b>(A) The others 用於範圍限定，指「其餘全部」；(C) another 指單數的「另一個」；(D) other 為形容詞，後面必須接名詞。'},
+ {s:'Choose the correct one: Some of the students are drawing; others are reading books, and ____ are playing outside.',o:['other','others','the others','another'],a:2,
+  e:'Some of the students 已把範圍限定在這群學生之內，列舉到第三類時指「其餘全部」，須用 The others（＝The rest）。<br><b>為何其他錯：</b>(A) 形容詞後須接名詞；(B) others 用於範圍未限定；(D) another 為單數。'},
+ {s:'Which sentence is correct?',o:['Some animals only eat meat; others only eat plants, still others eat both.','Some animals only eat meat; others only eat plants, and still others eat both.','Some animals only eat meat; the others only eat plants, and still others eat both.','Some animals only eat meat; another only eat plants, and still others eat both.'],a:1,
+  e:'寫成單句時，others、some 與 still others 前面必須加連接詞如 and 或 but。<br><b>為何其他錯：</b>(A) 少了連接詞；(C) 範圍未限定不可用 the others；(D) another 為單數且與後方動詞不一致。'},
+ {s:'Rewrite: It is thought that drinking tea regularly can improve a person’s health. →',o:['Drinking tea regularly is thought to improve a person’s health.','Drinking tea regularly is thought improving a person’s health.','Drinking tea regularly thinks to improve a person’s health.','It is thought drinking tea regularly to improve a person’s health.'],a:0,
+  e:'改寫公式：把 that 子句的主詞提到句首，beV 隨之，動詞改為不定詞 to V。<br><b>為何其他錯：</b>(B) 不定詞不可寫成 V-ing；(C) 主動被動顛倒；(D) 語序錯誤且虛主詞與真主詞並存。'},
+ {s:'Choose the correct rewriting: It is said that the famous cook opened his first restaurant at the age of 20. →',o:['The famous cook is said to open his first restaurant at the age of 20.','The famous cook is said opening his first restaurant at the age of 20.','The famous cook is said to have opened his first restaurant at the age of 20.','The famous cook said to have opened his first restaurant at the age of 20.'],a:2,
+  e:'that 子句的動作（opened）早於主要動詞（is said），改寫時不定詞須寫成 to have p.p.。<br><b>為何其他錯：</b>(A) to open 表同時發生；(B) 不定詞不可寫成 V-ing；(D) 缺少 be 動詞，主動被動顛倒。'}];
+
+/* ---------- init ---------- */
+buildCats();buildPractice();buildCloze();
+mc(document.getElementById('genreQs'),GENRE,'g');
+mc(document.getElementById('fourQs'),FOUR,'f');
+mc(document.getElementById('gsatQs'),GSAT,'s');
+mc(document.getElementById('mixQs'),MIX,'x');
+mc(document.getElementById('lifeQs'),LIFE,'l');
+mc(document.getElementById('focusQs'),FOCUS,'p');
+['A','B','R22','R23'].forEach(buildSeq);
+buildList('voc22',VOC22);buildList('pk22',PK22);buildList('voc23',VOC23);buildList('pk23',PK23);
+drawBoard();paint();
+document.querySelectorAll('textarea,input.blank').forEach(t=>{
+ if(!t.id)return;
+ if(S.text[t.id])t.value=S.text[t.id];
+ t.addEventListener('input',()=>{S.text[t.id]=t.value;save();});});
+</script>
+</body>
+</html>
